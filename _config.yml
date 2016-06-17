@@ -19,3 +19,9 @@ github_username:  jonmagic
 
 # Build settings
 markdown: kramdown
+
+# Permalinks
+collections:
+  posts:
+    output: true
+    permalink: /blog/archives/:year/:month/:day/:title/
