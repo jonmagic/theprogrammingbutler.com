@@ -25,3 +25,6 @@ collections:
   posts:
     output: true
     permalink: /blog/archives/:year/:month/:day/:title/
+
+plugins:
+  - jemoji
