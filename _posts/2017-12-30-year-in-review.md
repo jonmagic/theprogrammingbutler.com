@@ -5,6 +5,8 @@ title: Year in review
 
 This year flew by with a couple life changing family events, several projects shipped at work, and a lot of learning.
 
+![kite](https://cl.ly/0Q0J0o25082o/IMG_5507.jpg)
+
 ## Family
 
 We took two family trips to Florida this year to visit Natalie's parents. The first trip was after her father found out he had cancer and the second trip was to help her mom pack up and move after he passed away. Of course these weren't easy trips but I cherish the time we had with them.
@@ -18,6 +20,8 @@ The final piece of big news is that Natalie is pregnant and due in April!
 ## Work
 
 I can't go into detail about most of my projects now that I'm on the security team at [GitHub](https://github.com). I still write blog posts regularly but they only get posted to a private work blog. What I can talk about here is some of the cool tech I've been learning and using.
+
+![team](https://cl.ly/0K0l2B0K2I36/IMG_4301.jpg)
 
 ### React, GraphQL, and design
 
@@ -78,3 +82,5 @@ I'm going to continue studying machine learning and learning new technologies wh
 ## Thank you!
 
 Thank you to everyone who helped me through 2017, especially Natalie and Adalyn, my parents, and my teammates at GitHub :heart:
+
+![adalyn birthday](https://cl.ly/0614260n3i2z/IMG_4359.jpg)
