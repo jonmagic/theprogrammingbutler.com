@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HipChat, hubot, and Me</title>
+  <meta name="description" content="How you can give Siri her very own robot brother with some help fromHeroku and HipChat.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://theprogrammingbutler.com/blog/archives/2011/10/28/hipchat-hubot-and-me/">
+  <link rel="alternate" type="application/rss+xml" title="The Programming Butler" href="http://theprogrammingbutler.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Programming Butler</a>
+
+    <nav class="site-nav">
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">HipChat, hubot, and Me</h1>
+    <p class="post-meta"><time datetime="2011-10-28T00:00:00+00:00" itemprop="datePublished">Oct 28, 2011</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>How you can give Siri her very own robot brother with some help from
+Heroku and HipChat.</p>
+
+<p>Github released <a href="https://github.com/github/hubot">hubot</a> this week and
+geeks the world over have been transfixed by his awesomeness. He’s the
+second robot butler to enter my life lately,
+<a href="http://www.apple.com/iphone/features/siri.html">Siri</a> being the first.
+Together these two fulfill my every wish (not quite) and are at my beck
+and call day and night (too true).</p>
+
+<p><strong><span class="caps">UPDATE</span>: for a slightly different take <a href="http://martinciu.com/2011/11/deploying-hubot-to-heroku-like-a-boss.html">try
+these instructions by
+@martinciu</a></strong></p>
+
+<p><strong><span class="caps">NOTE</span>: to learn more about writing hubot
+scripts <a href="http://jonmagic.com/blog/archives/2011/10/28/hubot-scripts-explained/">read
+this</a></strong></p>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<p>The first step is to head on over to the <a href="https://github.com/github/hubot/downloads">hubot
+downloads</a> to grab yourself a
+copy of the latest hubot tarball. Download it and then open your command
+line to your download folder. It looked something like this for me:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>Downloads
+<span class="nb">tar </span>zxvf hubot-1.1.3.tar.gz
+<span class="nb">cd </span>hubot
+</code></pre></div></div>
+
+<p>Make sure you have node.js and npm installed. I used
+<a href="http://mxcl.github.com/homebrew/">homebrew</a> to accomplish this.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>node
+brew <span class="nb">install </span>npm
+</code></pre></div></div>
+
+<p>Then you can just run the hubot binary and it should install all the
+necessary packages and fire right up.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/hubot
+</code></pre></div></div>
+
+<p>If you run into any issues at this point please consult the <a href="https://github.com/github/hubot/issues">hubot
+Issues</a> page on Github, because
+someone has probably already run into the issue.</p>
+
+<h3 id="configuring-heroku-and-hipchat">Configuring Heroku and HipChat</h3>
+
+<p>First we need to initialize git for our hubot so he’s actually stored in
+version control.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init <span class="nb">.</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"spawning my first robot!"</span>
+</code></pre></div></div>
+
+<p>Next we create a new instance on the <a href="http://devcenter.heroku.com/articles/cedar">Heroku cedar
+stack</a> (assuming you already
+are <a href="http://devcenter.heroku.com/articles/quickstart">setup to use
+Heroku</a>).</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku create my_hubot_app_name <span class="nt">--stack</span> cedar
+</code></pre></div></div>
+
+<p>Then we need to setup hubot and Heroku to connect to our
+<a href="http://hipchat.com">HipChat</a> account.</p>
+
+<p>This requires creating the user in HipChat and then going to your
+account page in HipChat (https://mycompanyhere.hipchat.com/account/xmpp)
+to get some values that we’ll need for configuring Heroku.</p>
+
+<p>You’ll also need to go to the Group Admin in HipChat and the <span class="caps">API</span> tab to create an <span class="caps">API</span>
+Auth Token. Run the following commands replacing the values with the
+ones that match in the HipChat settings:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku config:add <span class="nv">HUBOT_HIPCHAT_JID</span><span class="o">=</span>&lt;Username&gt;
+
+heroku config:add <span class="nv">HUBOT_HIPCHAT_NAME</span><span class="o">=</span>&lt;Room nickname&gt;
+<span class="c"># example: heroku config:add HUBOT_HIPCHAT_NAME="Geoffrey Butler"</span>
+
+heroku config:add <span class="nv">HUBOT_HIPCHAT_PASSWORD</span><span class="o">=</span>&lt;Password you created <span class="k">for </span>hubots user&gt;
+heroku config:add <span class="nv">HUBOT_HIPCHAT_TOKEN</span><span class="o">=</span>&lt;Token from Group Admin and API&gt;
+</code></pre></div></div>
+
+<p>We also need to add the RedisToGo addon. (Thanks to <a href="http://profitably.com/">Graham
+Siener</a> for pointing this out)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku addons:add redistogo:nano
+</code></pre></div></div>
+
+<p>Now that Heroku is configured we need to slightly modify our Procfile to
+use the right adapter and name. Mine looks like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>app: bin/hubot <span class="nt">-a</span> hipchat <span class="nt">-n</span> <span class="s2">"Geoffrey Butler"</span>
+</code></pre></div></div>
+
+<p>Replace Geoffrey Butler with whatever you named the user in HipChat.
+This should exactly match the Room nickname we set above. Once you’ve
+updated the Procfile and saved it we need to commit it with git.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add Procfile
+git commit <span class="nt">-m</span> <span class="s2">"updated Procfile to use hipchat adapter and hipchat room nickname"</span>
+</code></pre></div></div>
+
+<h3 id="deploying-to-heroku">Deploying to Heroku</h3>
+
+<p>Now we should be ready to deploy.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push heroku master
+</code></pre></div></div>
+
+<p>This step failed for me at first. I had to edit package.json and change
+the dependencies section to look like this:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"hubot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"hubot-scripts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"optparse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0.1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The latest version of hubot-scripts blows up on the Heroku Cedar stack
+unfortunately. So after this step I committed my changes one more time
+and deployed.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add package.json
+git commit <span class="nt">-m</span> <span class="s2">"changed dependencies"</span>
+git push heroku master
+</code></pre></div></div>
+
+<p>Woot! It worked! Now that its deployed we just need to start it up.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku ps:scale <span class="nv">app</span><span class="o">=</span>1
+</code></pre></div></div>
+
+<p>Inside our HipChat rooms Geoffrey suddenly appeared and I was able to
+talk to him.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@geoffrey help
+(thanks|thank you) - say thanks to your butler
+&lt;keyword&gt; tweet - Returns a link to a tweet about &lt;keyword&gt;
+&lt;user&gt; is a badass guitarist - assign a role to a user
+&lt;user&gt; is not a badass guitarist - remove a role from a user
+animate me &lt;query&gt;  - The same thing as `image me`, except adds a few
+ascii me &lt;text&gt; - Show text in ascii art.
+check domain &lt;domainname&gt; - returns whether a domain is available
+convert me &lt;expression&gt; to &lt;units&gt; - Convert expression to given units.
+gem whois &lt;gemname&gt; - returns gem details if it exists
+haters - Returns a random haters gonna hate url
+help - Displays all of the help commands that Hubot knows about.
+image me &lt;query&gt;    - The Original. Queries Google Images for &lt;query&gt; and
+map me &lt;query&gt; - Returns a map view of the area returned by `query`.
+math me &lt;expression&gt; - Calculate the given expression.
+mustache me &lt;query&gt; - Searches Google Images for the specified query and
+mustache me &lt;url&gt;   - Adds a mustache to the specified URL.
+remind me in &lt;time&gt; to &lt;action&gt;    - Set a reminder in &lt;time&gt; to do an &lt;action&gt;
+ship it - Display a motivation squirrel
+show storage - Display the contents that are persisted in redis
+show users - Display all users that hubot knows about
+translate me &lt;phrase&gt; - Searches for a translation for the &lt;phrase&gt; and then
+translate me from &lt;source&gt; into &lt;target&gt; &lt;phrase&gt; - Translates &lt;phrase&gt; from &lt;source&gt; into &lt;target&gt;. Both &lt;source&gt; and &lt;target&gt; are optional
+who is &lt;user&gt; - see what roles a user has
+youtube me &lt;query&gt; - Searches YouTube for the query and returns the video
+</code></pre></div></div>
+
+<p>Awesome! Enjoy :)</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Programming Butler</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>The Programming Butler</li>
+          <li><a href="mailto:jonmagic@gmail.com">jonmagic@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jonmagic"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jonmagic"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>I am a geek by choice and a geek by trade. I live with my family in Northern California where we love to cook, explore, and enjoy life. I work at GitHub where I solve problems with software and buttle now and again.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4d597dfd6bb4ba2c48000003');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Running Mephisto (and other Rails apps) on Site5</title>
+  <meta name="description" content="There are a few steps in getting the latest Mephisto (0.8.2 at the timeof this writing) working on the shared hostSite5. As I’m writing this Site5 is upgradi...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://theprogrammingbutler.com/blog/archives/2009/04/20/h2-running-mephisto-and-other-rails-apps-on-site5/">
+  <link rel="alternate" type="application/rss+xml" title="The Programming Butler" href="http://theprogrammingbutler.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Programming Butler</a>
+
+    <nav class="site-nav">
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Running Mephisto (and other Rails apps) on Site5</h1>
+    <p class="post-meta"><time datetime="2009-04-20T00:00:00+00:00" itemprop="datePublished">Apr 20, 2009</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>There are a few steps in getting the latest Mephisto (0.8.2 at the time
+of this writing) working on the shared host
+<a href="http://www.site5.com">Site5</a>. As I’m writing this Site5 is upgrading
+all their servers to Ruby 1.8.7, Rails 2.2.2, RubyGems 1.3.1, and Mysql
+5.0. Thanks to everyone at Site5 that helped,
+<a href="http://twitter.com/BenAtSite5">Ben</a>, Beau, and the guy I talked to
+today (forgot his name). Continue reading for the steps I/we had to take
+to get things running properly.</p>
+
+<p><span class="caps"><span class="caps">UPDATE</span></span>: Please make
+sure to update your .htaccess, Site5 now supports mod_rails on most, if
+not all of their servers.</p>
+
+<h3 id="get-your-own-gems-repository-working">Get your own gems repository working</h3>
+
+<p>1. ssh to your account and in ~/ create a gems dir.</p>
+
+<blockquote>
+  <p># mkdir gems</p>
+</blockquote>
+
+<p>2. create a .gemrc file in ~/</p>
+
+<blockquote>
+  <p># nano ~/.gemrc</p>
+</blockquote>
+
+<p>3. paste the following in (changing username to be your user)</p>
+
+<blockquote>
+  <p>gemhome: /home/username/gems<br />
+gempath:\</p>
+  <ul>
+    <li>/home/username/gems\</li>
+    <li>/usr/lib/ruby/gems/1.8</li>
+  </ul>
+</blockquote>
+
+<p>4. edit (or create) .bash_profile in ~/</p>
+
+<blockquote>
+  <p># nano ~/.bash_profile</p>
+</blockquote>
+
+<p>5. paste the following (changing username to be your user)</p>
+
+<blockquote>
+  <p>export <span class="caps"><span class="caps">GEM</span></span><em><span class="caps">PATH</span>=/home/username/gems:/usr/lib/ruby/gems/1.8<br />
+export <span class="caps"><span class="caps">GEM</span></span></em><span class="caps">HOME</span>=/home/username/gems</p>
+</blockquote>
+
+<p>Now you should be able to rum <code class="language-plaintext highlighter-rouge">gem environment</code> and see the correct
+values.</p>
+
+<h3 id="downloading-mephisto-and-getting-it-setup">Downloading Mephisto and getting it setup.</h3>
+
+<p>I downloaded the latest release of Mephisto from
+<a href="http://mephistoblog.com/download">http://mephistoblog.com/download</a>, version 0.8.2 Drax Fixes. Once I had
+in on my dev machine I scp’d it up to Site5. There I created an apps dir
+in ~/ on my Site5 account, and untarred mephisto there. I renamed the
+dir to mephisto_0.8.2 and got to work on configuring stuff. First I
+copied config/database.example.yml to config/database.yml, went in and
+deleted all the extra lines, and just configured what I needed. I like
+to configure my development database, and then for the production one
+just have it point at the same settings like so:</p>
+
+<blockquote>
+  <p>development:<br />
+adapter: mysql<br />
+database: username_database<br />
+username: username_dbuser<br />
+password: password<br />
+host: localhost<br />
+encoding: utf8<br />
+test:<br />
+adapter: mysql<br />
+database: username_testdatabase<br />
+username: username_dbtestuser<br />
+password: password<br />
+host: localhost<br />
+encoding: utf8<br />
+production:<br />
+development</p>
+</blockquote>
+
+<p>I’ve been getting into testing stuff more lately, so I went ahead and
+configured a test database as well. Remember back at the beginning how
+we had to setup our own spot for gems? Well now we need to tell this
+application where to look for those gems, and put our app into
+production mode. <code class="language-plaintext highlighter-rouge">nano config/environment.rb</code> the top five lines to look
+like this (leave everything else alone in this file, oh, and make sure
+to replace username with your user):</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge"># Be sure to restart your web server when you modify this file.</code><br />
+<code class="language-plaintext highlighter-rouge">ENV['GEM_PATH'] = '/home/username/gems:/usr/lib/ruby/gems/1.8'</code><br />
+<code class="language-plaintext highlighter-rouge"># Uncomment below to force Rails into production mode when</code><br />
+<code class="language-plaintext highlighter-rouge"># you don't control web/app server and can't set it the proper way</code><br />
+<code class="language-plaintext highlighter-rouge">ENV['RAILS_ENV'] ||= 'production'</code></p>
+</blockquote>
+
+<h3 id="preparing-dependencies-and-tell-apache-what-to-do-with-requests">Preparing dependencies and tell Apache what to do with requests!</h3>
+
+<p>At this point you’ll have to run the following commands inside your
+mephisto dir to get our dependencies ready.</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge"># rake config/initializers/session_store.rb</code><br />
+<code class="language-plaintext highlighter-rouge"># rake gems:install</code><br />
+<code class="language-plaintext highlighter-rouge"># rake db:bootstrap</code></p>
+</blockquote>
+
+<p><strong><span class="caps"><span class="caps">THE</span> <span class="caps">FOLLOWING</span></span> .htaccess <span class="caps"><span class="caps">STUFF</span> IS <span class="caps">OBSOLETE</span></span>,
+<span class="caps">PLEASE</span> <span class="caps"><span class="caps">JUMP</span> <span class="caps">AHEAD</span></span></strong></p>
+
+<p>Once you’ve got that done we’re almost there! The next to last thing is
+add an .htaccess file to our public folder so that Apache knows to
+execute dispatch.fcgi when a request comes in. So
+<code class="language-plaintext highlighter-rouge">nano public/.htaccess</code> and paste the following:</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">Options +FollowSymLinks +ExecCGI</code><br />
+<code class="language-plaintext highlighter-rouge">RewriteEngine On</code><br />
+<code class="language-plaintext highlighter-rouge">RewriteRule ^$ index.html [QSA]</code><br />
+<code class="language-plaintext highlighter-rouge">RewriteRule ^([^.]+)$ $1.html [QSA]</code><br />
+<code class="language-plaintext highlighter-rouge">RewriteCond %{REQUEST_FILENAME} !-f</code><br />
+<code class="language-plaintext highlighter-rouge">RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]</code><br />
+<code class="language-plaintext highlighter-rouge">RewriteCond %{HTTP_ACCEPT} application/xrdsxml</code><br />
+<code class="language-plaintext highlighter-rouge">RewriteCond %{HTTP_ACCEPT} !application/xrdsxml\s*;\s*q\s*=\s*0(\.0{1,3})?\s*(,|$)</code><br />
+<code class="language-plaintext highlighter-rouge">ErrorDocument 500 "&amp;lt;h2&amp;gt;Application error&amp;lt;/h2&amp;gt;Rails application failed to start properly"</code></p>
+</blockquote>
+
+<p><strong>OK, <span class="caps"><span class="caps">NOW</span> <span class="caps">THAT</span></span> Site5 <span class="caps"><span class="caps">SUPPORTS</span></span> mod_rails <span class="caps"><span class="caps">MAKE</span> <span class="caps">YOUR</span></span> .htaccess
+<span class="caps"><span class="caps">LOOK</span> <span class="caps">LIKE</span> <span class="caps">THIS</span></span></strong></p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">PassengerEnabled on</code></p>
+</blockquote>
+
+<p>Last but not least we need to go to ~/ and rename public_html to
+public_html_old and then create a symlink like so:</p>
+
+<blockquote>
+  <p># ln -s ~/apps/mephisto_0.8.2/public public_html</p>
+</blockquote>
+
+<p>Thats it! Open your browser and try to access your site. Things should
+be working at this point.</p>
+
+<p>If it returns “Rails application failed to start properly” start looking
+to make sure you have all the gems you need. One thing I like to do is
+from my mephisto dir, run <code class="language-plaintext highlighter-rouge">./script/console</code> and do a few db lookups,
+then if that works I run <code class="language-plaintext highlighter-rouge">./script/server -e production</code> and then in a
+second ssh session to my Site5 account I’ll do a
+<code class="language-plaintext highlighter-rouge">curl http://localhost:3000/</code> to see what it returns. Often you can see
+the exact error doing it this way, and fix the problem!</p>
+
+<p><span class="caps"><span class="caps">OTHER</span> <span class="caps">NOTES</span></span>:</p>
+
+<ol>
+  <li>Do not install image_science gem even though mephisto works with
+it now. Site5 does not install freeimage on their servers, only
+imagemagick, and the Rmagick gem, so just go with those.</li>
+  <li>You could automate a lot of this with Capistrano, but if you are
+only doing it once, why bother? I use Capistrano in a lot in other
+instances, but was just lazy here :-)</li>
+  <li>Make sure your permissions on your public folder and dispatch.fcgi
+are set to 755</li>
+</ol>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Programming Butler</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>The Programming Butler</li>
+          <li><a href="mailto:jonmagic@gmail.com">jonmagic@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jonmagic"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jonmagic"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>I am a geek by choice and a geek by trade. I live with my family in Northern California where we love to cook, explore, and enjoy life. I work at GitHub where I solve problems with software and buttle now and again.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4d597dfd6bb4ba2c48000003');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+  </body>
+
+</html>

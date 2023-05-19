@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Rapid Onsite Software Development</title>
+  <meta name="description" content="My uncle has been bugging me to help him with writing some software forawhile now, and this last weekend he sent me another email with a newidea, to help him...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://theprogrammingbutler.com/blog/archives/2009/06/24/rapid-onsite-software-development/">
+  <link rel="alternate" type="application/rss+xml" title="The Programming Butler" href="http://theprogrammingbutler.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Programming Butler</a>
+
+    <nav class="site-nav">
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Rapid Onsite Software Development</h1>
+    <p class="post-meta"><time datetime="2009-06-24T00:00:00+00:00" itemprop="datePublished">Jun 24, 2009</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>My uncle has been bugging me to help him with writing some software for
+awhile now, and this last weekend he sent me another email with a new
+idea, to help him in his business. I had some time available this week,
+so I decided to drive down to his shop and try something. My goal was to
+take his simple idea, boil it down to its essence, and write the whole
+application in a day using <a href="http://www.rubyonrails.com">Rails</a>.</p>
+
+<p>To prepare myself I started working on <a href="http://en.wikipedia.org/wiki/Test-driven_development"><span class="caps"><span class="caps">TDD</span></span></a>
+again, using <a href="http://thoughtbot.com/projects/shoulda/">shoulda</a> and
+<a href="http://thoughtbot.com/projects/factory_girl">factory_girl</a>. I also
+built my own version of
+<a href="http://github.com/fudgestudios/bort/tree/master">bort</a> from the ground
+up, called <a href="http://github.com/jonmagic/pudding/">pudding</a> (it has a
+couple flavors, including
+<a href="http://github.com/jonmagic/pudding/tree/vanilla">vanilla</a> and
+<a href="http://github.com/jonmagic/pudding/tree/tapioca">tapioca</a>). I tried to
+find the right mix of features to give myself a running start when I
+arrived onsite.</p>
+
+<p>I arrived at 8:30am this morning and started programming at 9am. At
+first things were going fairly well, building my models out using <span class="caps"><span class="caps">TDD</span></span> went fast, and I was
+rolling along nicely on writing my controllers using <span class="caps"><span class="caps">TDD</span></span> when I hit a wall,
+aka, lack of knowledge on my part. After hitting this wall for 45
+minutes I finally gave up on <span class="caps"><span class="caps">TDD</span></span> and just went back to my old way of doing
+things, i.e. no testing.</p>
+
+<p>I was back on a roll again, using my <a href="https://github.com/jonmagic/webapp_gui/tree">osx
+theme</a> for the admin
+interface, and <a href="http://www.blueprintcss.org/">blueprint</a> for the css
+reset, typography, and layout on the technician facing part of the
+application (the part that will be used the most).</p>
+
+<p>Things were going along nicely until I ran into issues with the way I
+was doing ajax modals, via <a href="http://jquery.com/demo/thickbox/">thickbox</a>.
+I’d already implemented quite a bit using thickbox, when I decided I
+needed to start over on my modals using a different library. So far I
+think I’m gonna use <a href="http://dev.iceburg.net/jquery/jqModal/">jqModal</a>.</p>
+
+<p>So, at 4:30pm I called it quits for the day, realizing my “app in a day”
+dream was not gonna happen, although I believe I’m about a 1/3rd of the
+way there, which isn’t too bad.</p>
+
+<h3 id="lessons-learned">Lessons learned?</h3>
+
+<ul>
+  <li>I need to work quite a bit more on testing, I need to know it like
+the back of my hand</li>
+  <li>I need to have a sample controller built out in my pudding apps, so
+I can do a bit of copy/paste when building my controllers</li>
+  <li>It would also be nice to include my osx theme, and blueprint theme
+in my pudding apps</li>
+  <li>I need to get better at jQuery, and find the best plugins for my
+different needs</li>
+</ul>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Programming Butler</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>The Programming Butler</li>
+          <li><a href="mailto:jonmagic@gmail.com">jonmagic@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jonmagic"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jonmagic"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>I am a geek by choice and a geek by trade. I live with my family in Northern California where we love to cook, explore, and enjoy life. I work at GitHub where I solve problems with software and buttle now and again.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4d597dfd6bb4ba2c48000003');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+  </body>
+
+</html>

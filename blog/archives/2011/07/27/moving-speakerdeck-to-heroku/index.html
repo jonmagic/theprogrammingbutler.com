@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Moving Speaker Deck to Heroku</title>
+  <meta name="description" content="While at RailsConf earlier this year we decided that it would be wise tomove Speaker Deck to Heroku and S3, and we finally made it happen.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://theprogrammingbutler.com/blog/archives/2011/07/27/moving-speakerdeck-to-heroku/">
+  <link rel="alternate" type="application/rss+xml" title="The Programming Butler" href="http://theprogrammingbutler.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Programming Butler</a>
+
+    <nav class="site-nav">
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Moving Speaker Deck to Heroku</h1>
+    <p class="post-meta"><time datetime="2011-07-27T00:00:00+00:00" itemprop="datePublished">Jul 27, 2011</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>While at RailsConf earlier this year we decided that it would be wise to
+move Speaker Deck to Heroku and S3, and we finally made it happen.</p>
+
+<h3 id="history">History</h3>
+
+<p><a href="http://speakerdeck.com">Speaker Deck</a> has been my labor of love since
+June 1st of last year.
+<a href="http://orderedlist.com/the-team/#steve-smith">Steve</a> and
+<a href="http://orderedlist.com/the-team/#john-nunemaker">John</a> had the idea and
+I set about making it happen in my spare time. It launched October 20th
+2010 (with a lot of help from Steve and John) and has been purring along
+quietly since then. We’ve had 38 people request beta signups and as of
+today 85 presentations have been uploaded.</p>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<p>So back to point of this post, we decided that this app, with its hunger
+for lots of background workers (to process slides) and its desire to
+scale as adoption grows, mandated that we figure out a scaling strategy
+that worked for the app, and worked for us and our resources at the
+moment.</p>
+
+<p>We had been tossing <a href="http://heroku.com">Heroku</a> around in the back of
+our minds for awhile and after talking to a couple of the Heroku guys at
+<a href="http://railsconf.com">RailsConf</a> and having them check if their system
+had some software we needed (imagemagick/ghostscript), we decided to
+give it a go.</p>
+
+<p>Just a few days ago I decided to get to work on it after talking to my
+coworkers about how to make it happen.
+<a href="http://orderedlist.com/the-team/#brandon-keepers">Brandon</a> and I dug in
+and implemented storing slides on S3 (instead of MongoDB’s gridfs) in
+just a few short hours thanks to the
+<a href="https://github.com/jnicklas/carrierwave">Carrierwave</a> gem.</p>
+
+<p>It just so happened that this weekend was the <a href="http://weblog.rubyonrails.org/2011/7/14/rails-3-1-hackfest">Rails 3.1
+hackfest</a>,
+so Saturday we upgraded the app to Rails 3.1 and then to use Ruby 1.9.2
+so it could run on the <a href="http://devcenter.heroku.com/articles/cedar">Heroku Cedar
+Stack</a>. Next we started
+working on deploying to Heroku.</p>
+
+<h3 id="deploying">Deploying</h3>
+
+<p>Deploying ended up being a lot of trial and error. First I ran into an
+issue with Heroku’s bundler version (a release candidate) not being able
+to find one of my dependencies, but that was solved with the handy
+“bundle cache” command. You just do “bundle cache” and then check
+vendor/cache into your repo and it sends all the gems up (still in the
+compressed gem form) so bundler can install them from the vendor/cache
+dir.</p>
+
+<p>Finally I couldn’t get my resque workers to run in the right
+environment, turns out I was missing “task ‘resque:setup’ =&gt;
+:environment” in my Rakefile. Hadn’t needed that on our previous deploy
+to <a href="http://linode.com">Linode</a>, so it took awhile for me figure that one
+out.</p>
+
+<h3 id="migrating">Migrating</h3>
+
+<p>Brandon and I wrote a script to migrate the data on the old Linode
+server to our local database and at the same time suck the pdf’s out of
+Mongo on the old server and then put them on S3 rather than keeping them
+in gridfs. Then a quick mongodump and mongorestore later our production
+data was synced from my local machine to our new MongoHQ database.</p>
+
+<p>Now that the pdf’s were on S3 and the mongo database was populated we
+just had to reprocess the pdf’s into slides. Technically we could have
+grabbed the already generated slides from the old server, but we really
+wanted to see how much we could scale our worker processes on Heroku.</p>
+
+<p>Here’s the fun part! After a few failed starts (I’ll talk about those in
+a minute) we had 100 heroku workers processing 5000 slides (an intensive
+imagemagick/ghostscript task) and it ripped thru them all in just a few
+minutes. It was awesome to watch the resque web console and typing
+“heroku ps:scale worker=100” was a lot of fun!</p>
+
+<h3 id="heroku-scaling-gotchyas">Heroku Scaling Gotchya’s</h3>
+
+<p>DO <span class="caps">NOT</span> remove workers while you are processing
+a bunch of stuff unless your jobs are easy to restart. Heroku kills the
+processes not caring if they were already working on something, leaving
+jobs in limbo :/</p>
+
+<p>DO <span class="caps">NOT</span> change (upgrade/downgrade) your
+RedisToGo plan while workers are running, your redis db gets replaced
+instantly, losing any currently processing jobs.</p>
+
+<h3 id="wrap-up">Wrap Up</h3>
+
+<p>Overall this was a fairly painless move and it was so exciting to scale
+up our background workers and watch 20 slides a second get processed.
+Now that Speaker Deck is on Heroku and S3 we have one less constraint
+holding us back from releasing new features and hopefully leaving beta
+soon.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Programming Butler</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>The Programming Butler</li>
+          <li><a href="mailto:jonmagic@gmail.com">jonmagic@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jonmagic"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jonmagic"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>I am a geek by choice and a geek by trade. I live with my family in Northern California where we love to cook, explore, and enjoy life. I work at GitHub where I solve problems with software and buttle now and again.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4d597dfd6bb4ba2c48000003');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+  </body>
+
+</html>

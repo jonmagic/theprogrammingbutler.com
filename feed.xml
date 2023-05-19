@@ -1,0 +1,916 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Programming Butler</title>
+    <description>I am a geek by choice and a geek by trade. I live with my family in Northern California where we love to cook, explore, and enjoy life. I work at GitHub where I solve problems with software and buttle now and again.
+</description>
+    <link>http://theprogrammingbutler.com/</link>
+    <atom:link href="http://theprogrammingbutler.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 19 May 2023 15:27:47 +0000</pubDate>
+    <lastBuildDate>Fri, 19 May 2023 15:27:47 +0000</lastBuildDate>
+    <generator>Jekyll v4.3.2</generator>
+    
+      <item>
+        <title>Peer feedback</title>
+        <description>&lt;p&gt;It’s that time of year again and I’m asking for peer feedback and writing feedback for teammates and realized I’ve learned a few things about this process over the years that I think are worth sharing.&lt;/p&gt;
+
+&lt;h2 id=&quot;asking-for-peer-feedback&quot;&gt;Asking for peer feedback&lt;/h2&gt;
+
+&lt;p&gt;A close teammate and friend &lt;a href=&quot;https://github.com/kmcq&quot;&gt;@kmcq&lt;/a&gt; gave this piece of advice recently and it really stuck and has made this review cycle at work much more straight forward and enjoyable:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;One thing that I’ve found helps me write better peer reviews more efficiently for folks is for the requester to mention something that they’d like me to highlight: a project, quality, or whatever that I can speak to that adds evidence to what they’ll be writing themselves. This helps focus things and saves a lot of time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I took that idea and ran with it and when I started asking my peers for feedback I included links to things I wrote or code I shipped that they could reference.&lt;/p&gt;
+
+&lt;p&gt;This greatly reduces the burden on the people you are asking but at the same time I don’t want to limit what they include in their feedback so my requests went something like this:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Would you be willing to provide me peer feedback? The feedback form has pre-defined questions but here are some potential areas from our IC expectations that I would appreciate feedback on and links to work related to those areas that I completed during this review cycle:&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Leadership and Communication
+      &lt;ul&gt;
+        &lt;li&gt;Provides substantial technical leadership to help others learn and grow
+          &lt;ul&gt;
+            &lt;li&gt;example 1&lt;/li&gt;
+            &lt;li&gt;example 2&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Technical Contributions
+      &lt;ul&gt;
+        &lt;li&gt;Demonstrates deep knowledge of data – knows what data is needed, how to find new or missing data, connects disparate or ambiguous data
+          &lt;ul&gt;
+            &lt;li&gt;example 1&lt;/li&gt;
+            &lt;li&gt;example 2&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Typically when I provide feedback I focus it on just one expectation or project so you could just pick one of those examples above that you feel comfortable speaking to or choose something else entirely. Critical but constructive feedback is welcome and desired. If there is something I can be doing better for you or the team please don’t hold back.&lt;/p&gt;
+
+  &lt;p&gt;I would of course be happy to give you peer feedback if I can be of service.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;writing-peer-feedback&quot;&gt;Writing peer feedback&lt;/h2&gt;
+
+&lt;p&gt;I’ve been writing peer feedback two to four times a year for up to a dozen individuals for the majority of my 11 years at GitHub. Here are a few guidelines I use today that I’ve learned over the years.&lt;/p&gt;
+
+&lt;p&gt;First, when someone asks you for peer feedback ask them to apply the advice above! It’s a lot easier and faster to write feedback when the range of possibilities has already been narrowed down.&lt;/p&gt;
+
+&lt;p&gt;Second, address the feedback to them and not some third party like their manager. For example instead of saying “I appreciate how Rachel gathers requirements from stakeholders and delivers high impact results” say “Rachel, I appreciate how you gather requirements from stakeholders and deliver high impact results”. This feedback is for them! Not their manager.&lt;/p&gt;
+
+&lt;p&gt;Third, &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2014/11/23/intention-vs-perception/#avoid-surprises&quot;&gt;there should be no surprises&lt;/a&gt; when giving constructive feedback during a review cycle. What I like to do is reinforce feedback I’ve been giving during the review cycle and if at all possible provide examples of how I see them improving and encourage more of that behavior.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 25 Apr 2023 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2023/04/25/peer-feedback/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2023/04/25/peer-feedback/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Year in review</title>
+        <description>&lt;p&gt;This year flew by with a couple life changing family events, several projects shipped at work, and a lot of learning.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cl.ly/0Q0J0o25082o/IMG_5507.jpg&quot; alt=&quot;kite&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;family&quot;&gt;Family&lt;/h2&gt;
+
+&lt;p&gt;We took two family trips to Florida this year to visit Natalie’s parents. The first trip was after her father found out he had cancer and the second trip was to help her mom pack up and move after he passed away. Of course these weren’t easy trips but I cherish the time we had with them.&lt;/p&gt;
+
+&lt;p&gt;Adalyn is growing up faster than I can comprehend most days. She’s opinionated, independent, and can be sweet and then harsh in the span of a few seconds. Right now I’m trying to learn how to help her concentrate on a task or project for more than a few seconds at a time.&lt;/p&gt;
+
+&lt;p&gt;In August Natalie and I celebrated our tenth wedding anniversary (and fifteenth year together). My mom flew in to take care of Adalyn so that Natalie and I could get away for a few days. We flew to Portland and had a great time exploring a new city kid free!&lt;/p&gt;
+
+&lt;p&gt;The final piece of big news is that Natalie is pregnant and due in April!&lt;/p&gt;
+
+&lt;h2 id=&quot;work&quot;&gt;Work&lt;/h2&gt;
+
+&lt;p&gt;I can’t go into detail about most of my projects now that I’m on the security team at &lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt;. I still write blog posts regularly but they only get posted to a private work blog. What I can talk about here is some of the cool tech I’ve been learning and using.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cl.ly/0K0l2B0K2I36/IMG_4301.jpg&quot; alt=&quot;team&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;react-graphql-and-design&quot;&gt;React, GraphQL, and design&lt;/h3&gt;
+
+&lt;p&gt;One of my responsibilities is building workflow tools for a team of analysts. Most of these workflows are queues and the analysts have to review items in the queue as quickly as possible.&lt;/p&gt;
+
+&lt;p&gt;We chose &lt;a href=&quot;https://rubyonrails.org&quot;&gt;Rails&lt;/a&gt; with &lt;a href=&quot;https://github.com/rails/webpacker&quot;&gt;webpacker&lt;/a&gt; and a &lt;a href=&quot;https://reactjs.org/&quot;&gt;React&lt;/a&gt; frontend implemented in &lt;a href=&quot;https://www.typescriptlang.org/&quot;&gt;Typescript&lt;/a&gt; that reads from a &lt;a href=&quot;http://graphql.org/&quot;&gt;GraphQL&lt;/a&gt; API using the &lt;a href=&quot;https://www.apollographql.com/client/&quot;&gt;Apollo client&lt;/a&gt; library. We’ve been able to build super fast and information rich user interfaces with this tech stack and we’re loving it for the most part.&lt;/p&gt;
+
+&lt;p&gt;One thing that hasn’t worked great has been combining multiple API’s into a single unified GraphQL API, specifically re-exposing the &lt;a href=&quot;https://developer.github.com/early-access/platform-roadmap/&quot;&gt;GitHub Platform&lt;/a&gt; in our apps GraphQL API. We’ve had to duplicate a lot of the objects the GitHub Platform exposes and whenever we want to expose a new object or field we have to touch half a dozen places in our codebase.&lt;/p&gt;
+
+&lt;p&gt;Thankfully the folks over at Apollo have built &lt;a href=&quot;https://dev-blog.apollodata.com/graphql-schema-stitching-8af23354ac37&quot;&gt;a server side solution&lt;/a&gt; but it’s implemented in javascript so we’re planning on swapping out Rails in our stack for a node app. We believe &lt;a href=&quot;https://www.apollographql.com/docs/graphql-tools/schema-stitching.html&quot;&gt;schema stitching&lt;/a&gt; will have a significant impact on our development speed and maintainability.&lt;/p&gt;
+
+&lt;p&gt;I’ve also spent a good deal of time reading about user interface design and applying that knowledge to the analyst workflows. I started by reading through &lt;a href=&quot;http://www.mit.edu/~jtidwell/common_ground.html&quot;&gt;this site from 1999 by Jenifer Tidwell&lt;/a&gt; and am now reading her book &lt;a href=&quot;http://designinginterfaces.com/&quot;&gt;Designing Interfaces: Patterns for Effective Interaction Design&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;machine-learning&quot;&gt;Machine learning&lt;/h3&gt;
+
+&lt;p&gt;We’ve deployed multiple models to production now and have pipelines for training, testing, tuning, and deploying new models. While I haven’t been very involved with the actual model building process I have been spending a lot of my time developing new features for us to use in our models.&lt;/p&gt;
+
+&lt;p&gt;During model development our ML stack is &lt;a href=&quot;https://prestodb.io/&quot;&gt;Presto&lt;/a&gt;, &lt;a href=&quot;http://jupyter.org/&quot;&gt;Jupyter&lt;/a&gt;, and &lt;a href=&quot;http://scikit-learn.org/&quot;&gt;scikit-learn&lt;/a&gt;. When it’s time to put things into production we use &lt;a href=&quot;https://airflow.apache.org/&quot;&gt;Airflow&lt;/a&gt; to train and tune models on a regular schedule and then the models are deployed as microservices in our &lt;a href=&quot;https://kubernetes.io/&quot;&gt;kubernetes&lt;/a&gt; cluster.&lt;/p&gt;
+
+&lt;h3 id=&quot;stream-processing&quot;&gt;Stream processing&lt;/h3&gt;
+
+&lt;p&gt;Over the past few months we’ve switched to publishing our signals as &lt;a href=&quot;https://developers.google.com/protocol-buffers/&quot;&gt;protobuf&lt;/a&gt; messages to &lt;a href=&quot;https://kafka.apache.org/&quot;&gt;kafka&lt;/a&gt; so that we can use any number of consumers and start experimenting with stream processing.&lt;/p&gt;
+
+&lt;p&gt;We’re currently running two types of stream processors. The first is a Ruby app using the &lt;a href=&quot;https://github.com/zendesk/racecar&quot;&gt;Racecar gem&lt;/a&gt;. This app has let us experiment quickly with new streams and has helped us enable everyone on the team to do some basic stream processing.&lt;/p&gt;
+
+&lt;p&gt;The second one we’ve been experimenting with is &lt;a href=&quot;https://flink.apache.org/&quot;&gt;Flink&lt;/a&gt;. It is way faster and has many more features than our simple ruby consumer app but we’re still ironing out the development process for the rest of our team as you have to write Flink apps with Java, &lt;a href=&quot;https://www.scala-lang.org/&quot;&gt;Scala&lt;/a&gt;, or &lt;a href=&quot;https://kotlinlang.org/&quot;&gt;Kotlin&lt;/a&gt;. Our initial spike with Flink was in Scala but recently we’ve been writing apps with Kotlin which I think we’ll end up preferring to Scala or Java.&lt;/p&gt;
+
+&lt;h2 id=&quot;2017-reading-list&quot;&gt;2017 Reading List&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.audible.com/pd/A-Man-on-the-Moon-The-Voyages-of-the-Apollo-Astronauts-Part-1-Audiobook/B016J1NMR6&quot;&gt;A Man on the Moon: The Voyages of the Apollo Astronauts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.audible.com/pd/Cyberspies-Part-1-The-Secret-History-of-Surveillance-Hacking-and-Digital-Espionage-Audiobook/B01FV0BT8U&quot;&gt;Cyberspies: The Secret History of Surveillance, Hacking, and Digital Espionage&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.audible.com/pd/Into-the-Black-Part-1-The-Extraordinary-Untold-Story-of-the-First-Flight-of-the-Space-Shuttle-Columbia-and-the-Astronauts-Who-Flew-Her-Audiobook/B01DUV8W32&quot;&gt;Into the Black: The Extraordinary Untold Story of the First Flight of the Space Shuttle Columbia and the Astronauts Who Flew Her&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.audible.com/pd/Hidden-Figures-The-American-Dream-and-the-Untold-Story-of-the-Black-Women-Mathematicians-Who-Helped-Win-the-Space-Race-Audiobook/B01I28NTJU&quot;&gt;Hidden Figures: The American Dream and the Untold Story of the Black Women Mathematicians Who Helped Win the Space Race&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.audible.com/pd/The-Marvelous-Pigness-of-Pigs-Respecting-and-Caring-for-All-Gods-Creation-Audiobook/B01D3MDWEW&quot;&gt;The Marvelous Pigness of Pigs: Respecting and Caring for All God’s Creation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.audible.com/pd/Apollo-8-The-Thrilling-Story-of-the-First-Mission-to-the-Moon-Audiobook/B06Y5Q7YHS&quot;&gt;Apollo 8: The Thrilling Story of the First Mission to the Moon&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.audible.com/pd/Radical-Candor-Be-a-Kick-Ass-Boss-Without-Losing-Your-Humanity-Audiobook/B01MZ6RMS4&quot;&gt;Radical Candor: Be a Kick-Ass Boss Without Losing Your Humanity&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Managers-Path-Leaders-Navigating-Growth/dp/1491973897/ref=sr_1_1?ie=UTF8&amp;amp;qid=1514616553&amp;amp;sr=8-1&amp;amp;keywords=managers+path&quot;&gt;The Manager’s Path: A Guide for Tech Leaders Navigating Growth and Change&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.fullstackreact.com/&quot;&gt;Fullstack React&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://leanpub.com/redux-book&quot;&gt;The Complete Redux Book&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://martin.zinkevich.org/rules_of_ml/rules_of_ml.pdf&quot;&gt;Rules of Machine Learning: Best Practices for ML&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nostarch.com/linearalgebra&quot;&gt;The Manga Guide to Linear Algebra&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Deep-Learning-Adaptive-Computation-Machine/dp/0262035618/ref=pd_sim_14_4?_encoding=UTF8&amp;amp;pd_rd_i=0262035618&amp;amp;pd_rd_r=ZVE3307PRXX1DD691HQC&amp;amp;pd_rd_w=jeWjv&amp;amp;pd_rd_wg=Vn7CM&amp;amp;psc=1&amp;amp;refRID=ZVE3307PRXX1DD691HQC&quot;&gt;Deep Learning&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Introduction-Apache-Flink-Stream-Processing/dp/1491976586&quot;&gt;Introduction to Apache Flink: Stream Processing for Real Time and Beyond&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/Learning-Apache-Flink-Tanmay-Deshpande/dp/1786466228/ref=pd_lpo_sbs_14_img_0?_encoding=UTF8&amp;amp;psc=1&amp;amp;refRID=7HN2DZ597H9V24ZYE8A7&quot;&gt;Learning Apache Flink&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.safaribooksonline.com/library/view/stream-processing-with/9781491974285/&quot;&gt;Stream Processing with Apache Flink&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.safaribooksonline.com/library/view/kafka-the-definitive/9781491936153/&quot;&gt;Kafka: The Definitive Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.safaribooksonline.com/library/view/mastering-redis/9781783988181/&quot;&gt;Mastering Redis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.safaribooksonline.com/library/view/the-tao-of/9781617293146/&quot;&gt;The Tao of Microservices&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;stop-start-continue-for-2018&quot;&gt;Stop, Start, Continue for 2018&lt;/h2&gt;
+
+&lt;p&gt;I need to stop hurting my health with snacks and sugary drinks and stop working late nights and being immobile for hours on end staring at my laptop.&lt;/p&gt;
+
+&lt;p&gt;I would like to start exercising consistently, finding medical help for ongoing pain, spending more time playing with Adalyn and hanging out with Natalie, and interviewing again.&lt;/p&gt;
+
+&lt;p&gt;I’m going to continue studying machine learning and learning new technologies while consistently shipping at work, supporting my family and my teammates, and taking time to reflect and evolve.&lt;/p&gt;
+
+&lt;h2 id=&quot;thank-you&quot;&gt;Thank you!&lt;/h2&gt;
+
+&lt;p&gt;Thank you to everyone who helped me through 2017, especially Natalie and Adalyn, my parents, and my teammates at GitHub :heart:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cl.ly/0614260n3i2z/IMG_4359.jpg&quot; alt=&quot;adalyn birthday&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 30 Dec 2017 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2017/12/30/year-in-review/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2017/12/30/year-in-review/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Ten Years a Software Engineer</title>
+        <description>&lt;p&gt;Ten years ago I started programming professionally and now I’m a Senior Engineer at GitHub. This blog post begins with a retrospective and ends with what I’m looking forward to in the future.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-did-i-get-here&quot;&gt;How did I get here?&lt;/h2&gt;
+
+&lt;p&gt;Growing up I was always building, repairing, using, and teaching people how to use computers. With a steady stream of spare computer parts from my Uncle John and encouragement from my parents it was easy to get started and advance quickly. Most of my friends were into computers too and a couple of them got into software development but for some reason I didn’t start considering it seriously until 2006. I had done some html, css, and javascript hacking starting in the late 90’s but everything I had built up until 2006 was for myself (like my &lt;a href=&quot;http://web.archive.org/web/20041015030645/http://www.jonmagic.com/melioration/&quot;&gt;first blog&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;In 2006 everything changed when customers of my company &lt;a href=&quot;https://sabretechllc.com&quot;&gt;SabreTech&lt;/a&gt; started asking if we could build software for them. The opportunity to make money was enough to get me interested and I asked my friends Christian Metts, Daniel Parker, and Joshaven Potter for advice and help. With their help we shipped a couple of projects for customers (&lt;a href=&quot;https://github.com/jonmagic/foreverrememberme&quot;&gt;foreverrememberme&lt;/a&gt; and &lt;a href=&quot;https://github.com/jonmagic/sixsigmaforms&quot;&gt;sixsigmaforms&lt;/a&gt;) and I started to catch the programming bug. That same year I attended the &lt;a href=&quot;https://www.flickr.com/photos/mintchaos/sets/72157594176520552/&quot;&gt;first RailsConf in Chicago&lt;/a&gt; and &lt;a href=&quot;https://github.com/jonmagic/optik&quot;&gt;started building software to run SabreTech’s operations&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The first half of 2007 we took on more projects including building a centralized billing system for a chain of tanning salons and a network and computer monitoring system with remote access infrastructure to make helping customers faster, easier, and cheaper. Programming work was still my secondary job though, my primary responsibilities were building, installing, and repairing computers and training people how to use them. At this point I was driving an average of 1000 miles per week for work and I would continue to do so for the next 3 years.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cl.ly/3a3m3n3M0o1Q/jon_montana_big_other.png&quot; alt=&quot;lawrence kansas&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The second half of 2007 brought major life changes including getting married and moving to Elkhart, Indiana. Shortly after moving I did a google search for “ruby south bend” and came across the SBRB group that met at the University of Notre Dame. I attended my first meeting that fall and met John Nunemaker and Steve Smith.&lt;/p&gt;
+
+&lt;p&gt;Over the next three years I would continue doing programming projects for customers (&lt;a href=&quot;https://github.com/jonmagic/jukeman&quot;&gt;jukeman&lt;/a&gt;), for my business (&lt;a href=&quot;https://github.com/jonmagic/suitecs&quot;&gt;suitecs&lt;/a&gt;), for family (&lt;a href=&quot;https://github.com/jonmagic/globalauto&quot;&gt;globalauto&lt;/a&gt;), and one &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2011/10/03/the-history-of-speaker-deck/&quot;&gt;little side project&lt;/a&gt; with John Nunemaker and Steve Smith.&lt;/p&gt;
+
+&lt;p&gt;That little side project &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2010/11/18/hey-mom-i-got-a-job/&quot;&gt;turned into a job offer in late 2010&lt;/a&gt; and I sold my share of SabreTech to my business partners and started working full time as a software developer at Ordered List. Brandon Keepers joined our team a few weeks after me and then Matt Graham joined a couple of months after that.&lt;/p&gt;
+
+&lt;p&gt;Over the course of 2010 our small team &lt;a href=&quot;https://gaug.es&quot;&gt;built a new product&lt;/a&gt; while maintaining our existing products &lt;a href=&quot;http://get.harmonyapp.com/&quot;&gt;Harmony&lt;/a&gt; and &lt;a href=&quot;https://speakerdeck.com&quot;&gt;Speaker Deck&lt;/a&gt; as well as paying our salaries by consulting for companies like Zynga (we helped Zynga scale Words with Friends and helped design and build the javascript version of Words with Friends for Facebook).&lt;/p&gt;
+
+&lt;p&gt;Along the way our friends at GitHub noticed our products and our work and in the fall of that year made an offer to acquire our small company. &lt;a href=&quot;https://github.com/blog/993-ordered-list-is-a-githubber&quot;&gt;The five of us joined GitHub on December 5th, 2011&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cl.ly/373v3T3E0633/speaking.jpg&quot; alt=&quot;speaking at failcon&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Since joining GitHub I have helped serve our support team, finance team, sales team, customers (specifically GitHub Enterprise admins and Organization admins), and now our security team by designing, planning, building, and maintaining software. I’ve built and led teams along the way but my responsibilities have mostly been solving problems for my coworkers and our customers using software. Earlier this year I was promoted to Senior Engineer. This promotion was especially exciting for me as I looked back at the previous ten years and what it took to get here.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-did-i-learn-along-the-way&quot;&gt;What did I learn along the way?&lt;/h2&gt;
+
+&lt;p&gt;So. Many. Things.&lt;/p&gt;
+
+&lt;p&gt;The importance of &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2011/10/20/mentors/&quot;&gt;mentors&lt;/a&gt; as accelerators to growth. Being a leader is often about &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2014/11/23/intention-vs-perception/&quot;&gt;building trust, giving ownership, and avoiding surprises&lt;/a&gt;. That figuring out &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2011/11/29/how-we-work/&quot;&gt;a process that works&lt;/a&gt; for your team matters. That &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2014/05/22/deliberate-iteration/&quot;&gt;deliberate iteration&lt;/a&gt; paired with discipline is a driver for success. That &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2013/05/15/business-with-pleasure/&quot;&gt;it is important to know your weaknesses and deal find ways to deal with them&lt;/a&gt;. That &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2012/09/07/focus/&quot;&gt;focus&lt;/a&gt; is an ongoing struggle. That solving the right problem, doing the simplest thing first, and failing fast &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2013/09/16/new-team-and-lessons-learned/&quot;&gt;are things I value&lt;/a&gt;. That listening to &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2014/02/13/sleep-apnea-survivor/&quot;&gt;friends and family can save your life&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;But I’ve written about all of those things already. So what haven’t I written about?&lt;/p&gt;
+
+&lt;h3 id=&quot;retrospectives&quot;&gt;Retrospectives&lt;/h3&gt;
+
+&lt;p&gt;This blog post is a result of reflecting on the past 10 years so I figured talking about my process for retrospectives would be fitting. Consistent retrospectives are probably the largest contributing factor to who I am today compared to 10 years ago.&lt;/p&gt;
+
+&lt;p&gt;Taking time every day, week, month, and year to analyze decisions I’ve made, actions I’ve taken, and the actual outcomes versus my expectations is how I learn what I need to change who I am into who I want to be. A recent example, taken from a personal &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2014/11/17/swot-analysis/&quot;&gt;SWOT analysis&lt;/a&gt;, was that I have a tendency to talk over my peers when I get excited about an idea ☹️ As soon as I identified this behavior I started working to change it.&lt;/p&gt;
+
+&lt;p&gt;A retrospective goes something like this:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Set aside distraction free time.&lt;/li&gt;
+  &lt;li&gt;Think about something that has happened, whether it was something I did or that happened to me.&lt;/li&gt;
+  &lt;li&gt;Consider the situation, how I feel about it, what I can do better the next time I’m in that situation.&lt;/li&gt;
+  &lt;li&gt;Follow up homework if needed. This could be anything from repeating the situation so I can get better at handling to reading about the subject to learn how other people think about it.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Setting aside time is the hardest part for me, so I’m always keeping an eye out for these distractions:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Social media&lt;/li&gt;
+  &lt;li&gt;Entertainment (TV/movies/podcasts/audiobooks)&lt;/li&gt;
+  &lt;li&gt;Speeding through life&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Likewise these are opportunities for reflection that I’m constantly looking for:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;After personal devotions (or meditation)&lt;/li&gt;
+  &lt;li&gt;After receiving feedback (good or bad)&lt;/li&gt;
+  &lt;li&gt;After pretty much every conversation&lt;/li&gt;
+  &lt;li&gt;After reading, watching, or listening to something (entertainment made both lists!)&lt;/li&gt;
+  &lt;li&gt;The end of the day, week, month, and year&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I like to write down the things I’ve learned through my retrospectives and I often use frameworks like Start/Stop/Keep or a SWOT analysis to help me organize my thoughts and find patterns. This gives me a great opportunity to find repeating themes over the years and track my personal progress. And sometimes it even turns into a blog post 😃&lt;/p&gt;
+
+&lt;h2 id=&quot;where-do-i-see-myself-going-in-the-future&quot;&gt;Where do I see myself going in the future?&lt;/h2&gt;
+
+&lt;p&gt;I’ve been interested in &lt;a href=&quot;https://en.wikipedia.org/wiki/Machine_learning&quot;&gt;Machine Learning&lt;/a&gt; for the past year and recently took a new position at GitHub working on the Security team where I get to use my current skillset and learn some ML and computational statistics techniques. I’m really enjoying it so far and I think I’ll be focused on Machine Learning and Artificial Intelligence for the next few years. I’ve also been hardware hacking as a hobby for the past few years so maybe I’ll get to build that robot butler someday.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cl.ly/0O2X16332m0o/robot-walk.gif&quot; alt=&quot;robot-walk&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 05 Dec 2016 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2016/12/05/ten-years-a-software-engineer/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2016/12/05/ten-years-a-software-engineer/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Intention vs Perception</title>
+        <description>&lt;p&gt;It is interesting to study the gap between the intention of
+communication and the perception of communication in the context of
+leadership. “We’re going to do X going forward” can be interpreted as
+“You’re doing a crappy job at Y so we’re going to try X now” or “We
+decided that it is better to do X instead of Y because we had a meeting
+you weren’t invited to since we don’t really value your opinion” and the
+list of interpretations goes on.&lt;/p&gt;
+
+&lt;p&gt;In my experience perception rarely matches intention, so figuring out
+how to change your message to get across what you actually intended is a
+fun challenge.&lt;/p&gt;
+
+&lt;p&gt;There are probably many ways to do it successfully, but I only have
+experience with a few so I’ll share those (&lt;a href=&quot;http://www.urbandictionary.com/define.php?term=ymmv&quot;&gt;&lt;span class=&quot;caps&quot;&gt;YMMV&lt;/span&gt;&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;earn-the-trust-of-those-impacted&quot;&gt;Earn the trust of those impacted&lt;/h3&gt;
+
+&lt;p&gt;Earning trust takes time. Time spent learning about someone, how to
+communicate with them, what they are passionate about, understanding
+their fears.&lt;/p&gt;
+
+&lt;p&gt;I like to take people out to lunch, video chat, pair program on a code
+kata, or help with a problem they are having.&lt;/p&gt;
+
+&lt;p&gt;This is the first opportunity to be a servant leader I think. Serve the
+people you lead and, more likely than not, you will gain their respect
+and trust.&lt;/p&gt;
+
+&lt;h3 id=&quot;give-ownership&quot;&gt;Give ownership&lt;/h3&gt;
+
+&lt;p&gt;When someone is going to change the way I work, what I’m working on, or
+who I’m working with, the psychological toll of that change can be
+greatly reduced if I feel like I have control over my own destiny.&lt;/p&gt;
+
+&lt;p&gt;I look forward to working with leaders that engage me and get me
+involved in the decision-making process. They ask things like “What do
+you think about doing X instead of Y; what would be the benefits and
+what would be the drawbacks?”&lt;/p&gt;
+
+&lt;p&gt;Asking for, listening, and reacting to my feedback gives me ownership of
+an idea, even if it was not my own. Reacting is not necessarily
+implementing my feedback, but this process of involvement changes the
+way the idea was communicated and perceived.&lt;/p&gt;
+
+&lt;h3 id=&quot;avoid-surprises&quot;&gt;Avoid surprises&lt;/h3&gt;
+
+&lt;p&gt;There is a bonus to talking one-on-one with everyone on a team about an
+idea before announcing it at a meeting or in an email. You avoid
+surprises. Turns out not many people enjoy surprises, unless it’s a
+surprise party.&lt;/p&gt;
+
+&lt;p&gt;Having an opportunity to hear and discuss an idea before it is executed
+gives me time to get comfortable with it. If you have gained my trust
+then I also feel like I have time to provide feedback before the idea
+becomes reality.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 23 Nov 2014 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2014/11/23/intention-vs-perception/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2014/11/23/intention-vs-perception/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>SWOT Analysis</title>
+        <description>&lt;p&gt;In college I learned how to do a &lt;a href=&quot;http://en.wikipedia.org/wiki/SWOT_analysis&quot;&gt;SWOT
+analysis&lt;/a&gt; and I’ve been
+using it in one form or another at work and in my personal life ever
+since.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update 5-19-2015:&lt;/strong&gt; The authors of &lt;a href=&quot;http://formswift.com/swot-analysis-guide&quot;&gt;this amazing &lt;span class=&quot;caps&quot;&gt;SWOT&lt;/span&gt;
+guide&lt;/a&gt; reached out to me to
+let me know about their work. After reading my simple how to below
+&lt;a href=&quot;http://formswift.com/swot-analysis-guide&quot;&gt;check out their full guide&lt;/a&gt;
+to learn even more.&lt;/p&gt;
+
+&lt;p&gt;So why do I care about my strengths, weaknesses, opportunities, and
+threats? Because I’m ambitious (both a strength and a weakness) and I
+constantly want to be better at everything I do and I want everything
+I’m a part of to constantly be improving.&lt;/p&gt;
+
+&lt;p&gt;How do I identify and analyze these areas with regard to my personal
+life or work life? I choose what I want to analyze (myself, a friend
+asking for feedback, an area of my job) and then sit down with a pen and
+paper.&lt;/p&gt;
+
+&lt;p&gt;I start by draw by drawing a vertical line down the center of the page
+and then a horizontal line across the page. I now have four quadrants
+and I label them S, W, O, and T.&lt;/p&gt;
+
+&lt;p&gt;Next I write down weaknesses and then strengths in their quadrants. You
+probably won’t be sharing this analysis with anyone so be brutally
+honest. Depending on your disposition you may find it easier to write
+down weaknesses than strengths, or vice versa. With time you’ll get
+better at identifying both if you practice consistently.&lt;/p&gt;
+
+&lt;p&gt;Once I have an understanding of strengths and weaknesses it is usually
+pretty easy to identify opportunities that capitalize on strengths and
+work to turn weaknesses into strengths. Likewise threats are anything
+that could turn a strength into a weakness or further entrench an
+existing weakness.&lt;/p&gt;
+
+&lt;p&gt;Now you have to decide what action to take based on the opportunities
+and threats. After repeating this process a few times you start to see
+patterns and improve your process even more. Here’s an analysis I did on
+myself a few months back with regard to my work life.&lt;/p&gt;
+
+&lt;p&gt;I noticed after this analysis that my first opportunity, “listen more”,
+was the most important thing to act on because it addressed several of
+my weaknesses while building on my strengths and lessened at least one
+threat. This is one pattern I look for now, opportunities that apply to
+multiple concerns.&lt;/p&gt;
+
+&lt;p&gt;Try a &lt;span class=&quot;caps&quot;&gt;SWOT&lt;/span&gt; Analysis next time you want to
+level up.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 17 Nov 2014 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2014/11/17/swot-analysis/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2014/11/17/swot-analysis/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Deliberate Iteration</title>
+        <description>&lt;p&gt;I’ve never been good at New Years resolutions but this year has been
+different. Starting the year I decided to iterate on life in a much more
+deliberate way. Here are the results.&lt;/p&gt;
+
+&lt;h3 id=&quot;writing&quot;&gt;Writing&lt;/h3&gt;
+
+&lt;p&gt;I’m starting to understand how important it is to measure iterations in
+order to continously improve, instead of just changing things for the
+sake of change. Writing things down is the best way I have found to to
+measure change.&lt;/p&gt;
+
+&lt;p&gt;I’m on my sixth notebook for the year. I write notes when I get up in
+the morning, when I’m in meetings, when I handle email, when I’m
+reading, all throughout the day really.&lt;/p&gt;
+
+&lt;p&gt;When I sense change I can look back at my notes and see the evolution of
+an idea. After testing change to see if the results are better than
+previous results I can identify patterns in the ideas I wrote down and
+repeat them or discard them.&lt;/p&gt;
+
+&lt;h3 id=&quot;scheduling&quot;&gt;Scheduling&lt;/h3&gt;
+
+&lt;p&gt;A few weeks ago I started using a calendar, like for real.&lt;/p&gt;
+
+&lt;p&gt;(the first one is what my calendar looked like before I started using it
+consistently)&lt;/p&gt;
+
+&lt;p&gt;The results have been dramatic. My work and life balance feels better
+than ever, I don’t feel like I’m dropping the ball anymore, and I rarely
+have to spend time thinking about what to do next.&lt;/p&gt;
+
+&lt;p&gt;Before I only used to schedule meetings, dates I had to be at. This
+barely worked, I would sometimes miss meetings, or I would get anxious
+because I would suddenly have the feeling I had missed a meeting (even
+though I hadn’t).&lt;/p&gt;
+
+&lt;p&gt;Now every Sunday evening I schedule the upcoming week, from 8am to 5pm
+every day (+-1 hour). I use &lt;a href=&quot;http://readdle.com/products/calendars5/&quot;&gt;Calendars
+5&lt;/a&gt; on my iPhone and it buzzes
+me 10 minutes before my next scheduled thing and I use
+&lt;a href=&quot;https://flexibits.com/fantastical&quot;&gt;Fantastical&lt;/a&gt; on the desktop.&lt;/p&gt;
+
+&lt;p&gt;I have trained my brain to rely on the technology, by using it
+consistently. My error rates and anxious moments have been reduced to
+almost zero.&lt;/p&gt;
+
+&lt;p&gt;I’m getting more done at work, I’m exercising more, and I’m spending
+more time relaxing. What am I spending less time doing? Spinning my
+wheels because I’m not sure what to do next.&lt;/p&gt;
+
+&lt;h3 id=&quot;meetings&quot;&gt;Meetings&lt;/h3&gt;
+
+&lt;p&gt;A lot of people have a visceral reaction to the word “meeting”. I used
+to but I don’t anymore. Every day I set aside time to meet with people.
+These meetings range from standups to work lunches to video calls to
+catch up with remote coworkers.&lt;/p&gt;
+
+&lt;p&gt;As our company has grown I’ve come to realize how important it is to be
+deliberate about spending time with people and not just shipping code.
+Without connecting it is easy to quickly become lost.&lt;/p&gt;
+
+&lt;p&gt;Every week I do at least one working lunch, I spend at least one hour on
+a video conference with a remote coworker, and I attend at least one
+planning meeting (whether it’s for my team or a team we interact with).&lt;/p&gt;
+
+&lt;p&gt;Staying connected to coworkers has improved my mental health 10X as well
+as improving my value to the company by being able to connect people and
+ideas.&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Figure out how you are spending your time (maybe write it down?) and
+then look for things to change. Try using tools and doing things you
+think suck (calendars and meetings oh my!). Measure the results. Do it
+all over again.&lt;/p&gt;
+
+&lt;h3 id=&quot;other-notes&quot;&gt;Other notes:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Writing things down is &lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2011/10/03/just-write-it-down/&quot;&gt;a lesson I have learned
+before&lt;/a&gt;
+and forgotten. Why is it that good habits are so much harder to
+practice than bad ones?&lt;/li&gt;
+  &lt;li&gt;I’m writing this during my scheduled time off today :)&lt;/li&gt;
+  &lt;li&gt;I’m also deliberate about meeting with people outside of my
+immediate circle, inside and outside of work.&lt;/li&gt;
+  &lt;li&gt;I realize some people will laugh at me for just now starting to use
+a calendar, but I think I’ve just now grown out of my 20’s “I enjoy
+chaos more than order” lifestyle.&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 22 May 2014 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2014/05/22/deliberate-iteration/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2014/05/22/deliberate-iteration/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Robots can do support too</title>
+        <description>&lt;p&gt;GitHub launched the &lt;a href=&quot;http://atom.io&quot;&gt;Atom beta&lt;/a&gt; this week and the
+response has been great. As the first day was winding down a coworker
+suggested we write an FAQ and add a robot to answer the frequently asked
+questions in the irc channel where people were congregating. Here’s how
+we taught &lt;a href=&quot;http://hubot.github.com&quot;&gt;hubot&lt;/a&gt; to do support.&lt;/p&gt;
+
+&lt;h3 id=&quot;questions-and-answers&quot;&gt;Questions and answers&lt;/h3&gt;
+
+&lt;p&gt;First my coworker gathered the questions that were being asked over and
+over again:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;where do I get an invite?&lt;/li&gt;
+  &lt;li&gt;is there a windows or linux version of atom?&lt;/li&gt;
+  &lt;li&gt;how much will Atom cost?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Next he wrote short and to the point answers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Are you looking for an atom invite? Go to https://atom.io/ and put
+in your email, or join the #product-invitations room.&lt;/li&gt;
+  &lt;li&gt;Are you looking for a windows or linux version of atom? We don’t
+have one yet, but we will in the future.&lt;/li&gt;
+  &lt;li&gt;Were you inquiring in the channel about Atom’s price? We haven’t set
+a price yet, but expect it will be on par with the cost for
+similar editors.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally he compiled the regular expressions that we could use in hubot
+to listen for people’s questions and then reply to them with the
+answers.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;invit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;es&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;windows&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;linux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;pric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;training-the-robot&quot;&gt;Training the robot&lt;/h3&gt;
+
+&lt;p&gt;Meanwhile I used the &lt;a href=&quot;https://github.com/github/hubot/blob/master/docs/README.md&quot;&gt;Getting
+Started&lt;/a&gt;
+instructions to fire up a hubot instance.&lt;/p&gt;
+
+&lt;p&gt;Using &lt;a href=&quot;http://shapeshed.com/setting-up-nodejs-and-npm-on-mac-osx/&quot;&gt;npm&lt;/a&gt;
+I installed the hubot and coffee-script packages.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; hubot coffee-script
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Next I created the hubot instance.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;hubot &lt;span class=&quot;nt&quot;&gt;--create&lt;/span&gt; atomicHubot
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;atomicHubot
+git init &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Create atomicHubot&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then I started hacking on the script (this is the final iteration with
+my work and my coworkers).&lt;/p&gt;
+
+&lt;div class=&quot;language-coffeescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Description:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   Replying to people in atom channels on freenode.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;isNotified&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyword&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;brain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyword&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;brain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyword&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;some&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;replyTo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hear&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/invit(es?|ation)/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isNotified&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;invite&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;replyTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Are you looking for an atom invite?  Go to https://atom.io/ and put in your email, or join the #product-invitations room.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;brain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;invite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hear&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/(windows|linux)/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isNotified&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;winux&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;replyTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Are you looking for a windows or linux version of atom?  We don't have one yet, but we will in the future.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;brain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;winux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hear&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/(pric(e|ing)|cost)/i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;unless&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isNotified&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;price&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;replyTo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Were you inquiring in the channel about Atom's price?  We haven't set a price yet, but expect it will be on par with the cost for similar editors.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;robot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;brain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;push&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;username&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Every so often I would test the script in hubot’s shell console.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bin/hubot
+&amp;gt; where can I get an invite?
+hubot&amp;gt; jonmagic: Are you looking for an atom invite?  Go to https://atom.io/ and put in your email, or join the ##atom-invitations room.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Next I installed the &lt;a href=&quot;https://github.com/nandub/hubot-irc&quot;&gt;irc adapter&lt;/a&gt;
+in atomicHubot.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;hubot-irc &lt;span class=&quot;nt&quot;&gt;--save&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; npm &lt;span class=&quot;nb&quot;&gt;install
+&lt;/span&gt;git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Add irc adapter&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now I needed atomicHubot to actually live on the internet and connect to
+the irc channel so I read the &lt;a href=&quot;https://github.com/github/hubot/blob/master/docs/deploying/heroku.md&quot;&gt;Deploying Hubot to
+Heroku&lt;/a&gt;
+instructions. These required that I have the &lt;a href=&quot;http://toolbelt.heroku.com&quot;&gt;Heroku
+toolbelt&lt;/a&gt; installed.&lt;/p&gt;
+
+&lt;p&gt;Step 1 was creating the application on Heroku and configuring it.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;heroku create atomichubot
+heroku addons:add redistogo:nano
+heroku config:set &lt;span class=&quot;nv&quot;&gt;HEROKU_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;http://atomichubot.herokuapp.com
+heroku config:set &lt;span class=&quot;nv&quot;&gt;HUBOT_IRC_NICK&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;atomicHubot
+heroku config:set &lt;span class=&quot;nv&quot;&gt;HUBOT_IRC_ROOMS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;#channel-name&lt;/span&gt;
+heroku config:set &lt;span class=&quot;nv&quot;&gt;HUBOT_IRC_SERVER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;irc.freenode.net
+heroku config:set &lt;span class=&quot;nv&quot;&gt;HUBOT_IRC_UNFLOOD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Step 2 was deploying to Heroku.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push heroku master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;That was it, I didn’t have to do any trouble shooting, atomicHubot
+connected to the irc channel and began fielding questions!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;Adding this hubot to the irc channel helped reduce the number of
+questions we had to answer and increased the speed at which common
+questions were answered.&lt;/p&gt;
+
+&lt;p&gt;There are probably easier ways to setup auto reply answers in irc
+channels but hubot is a tool I’m familiar with and love to hack on. It
+only took a few minutes to setup and I’ll probably use the same
+technique in the future.&lt;/p&gt;
+
+&lt;p&gt;This may not work for everyone but hubot sure helped out in a pinch,
+give it a try sometime. For tips on writing hubot scripts see my post
+&lt;a href=&quot;http://theprogrammingbutler.com/blog/archives/2011/10/28/hubot-scripts-explained/&quot;&gt;hubot Scripts
+Explained&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 28 Feb 2014 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2014/02/28/robots-can-do-support-too/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2014/02/28/robots-can-do-support-too/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Sleep Apnea Survivor</title>
+        <description>&lt;p&gt;Almost two years ago a friend and my wife saved my life. They got me to
+go see a doctor because my sleep was a mix of bone rattling snores,
+deathly silence, and gasps for air. If this sounds like someone you
+know, help save a life.&lt;/p&gt;
+
+&lt;h3 id=&quot;i-should-have-listened-to-her&quot;&gt;I should have listened to her&lt;/h3&gt;
+
+&lt;p&gt;She wouldn’t say “I told you so” but I am certainly guilty of not
+following my wife’s advice several years ago to go see a doctor because
+I snored so loudly.&lt;/p&gt;
+
+&lt;p&gt;I should have had more empathy for her situation, struggling to get
+sleep next to a roaring locomotive. Some nights she would go sleep in
+another room so she could be rested enough in the morning to go to work.&lt;/p&gt;
+
+&lt;h3 id=&quot;resorting-to-the-bathtub&quot;&gt;Resorting to the bathtub&lt;/h3&gt;
+
+&lt;p&gt;Then there was a night in Lansing Michigan where I shared a hotel room
+with three friends while attending a tech conference. In the morning I
+found one of them sleeping in the bathtub, another with headphones on,
+and the other with his head wrapped tightly in a pillow.&lt;/p&gt;
+
+&lt;p&gt;When they woke up they were exhausted, trying to laugh it off in order
+to resist the urge to kill me (something discussed during the night).
+They described my sleep as snores loud enough to shake both beds in the
+room, interspersed with moments of sweet blissful silence, followed by
+sucking gasps for air.&lt;/p&gt;
+
+&lt;h3 id=&quot;death-as-a-motivator&quot;&gt;Death as a motivator&lt;/h3&gt;
+
+&lt;p&gt;Through all of this I still hadn’t taken the time to see a doctor. I
+didn’t think the snoring and silence were affecting my daily life, I
+wasn’t tired during the day, and going to see a doctor was a pain and
+would cost a lot of money.&lt;/p&gt;
+
+&lt;p&gt;Plus I had read up on &lt;a href=&quot;http://en.wikipedia.org/wiki/Sleep_apnea&quot;&gt;sleep
+apnea&lt;/a&gt; treatments online and
+the thought of wearing a mask at night sounded awful. It seemed like all
+my searching just turned up stories of abandoned &lt;a href=&quot;http://en.wikipedia.org/wiki/Continuous_positive_airway_pressure&quot;&gt;&lt;span class=&quot;caps&quot;&gt;CPAP&lt;/span&gt;&lt;/a&gt;
+machines.&lt;/p&gt;
+
+&lt;p&gt;Finally a friend and coworker told me how his father went to bed one
+night and never woke up the next day and sleep apnea was the likely
+cause. This was the motivation I needed to finally go see a doctor.&lt;/p&gt;
+
+&lt;h3 id=&quot;sleep-studied&quot;&gt;Sleep studied&lt;/h3&gt;
+
+&lt;p&gt;In the spring of 2012 I had my first sleep study. I walked the two
+blocks from our home in Elkhart to the hospital, where they set me up in
+a small room that looked like a hotel room. Before going to bed they
+connected two dozen sensors to my head, chest, and legs.&lt;/p&gt;
+
+&lt;p&gt;About 6 hours laster I woke up to go to the bathroom and they said they
+had enough data and sent me home. They told me I would hear back from
+the doctor in about two weeks.&lt;/p&gt;
+
+&lt;h3 id=&quot;you-are-not-my-patient&quot;&gt;You are not my patient&lt;/h3&gt;
+
+&lt;p&gt;The afternoon after the sleep study I received a call from the doctors
+office asking if I could come in the next day. This was a surprise but I
+guessed the doctors business was just running a little slow so the
+sooner they got me in the faster they could collect their money.&lt;/p&gt;
+
+&lt;p&gt;I arrived at the doctors office the next day, they took my weight,
+showed me into a small room, and then the nurse had me do the &lt;a href=&quot;http://umm.edu/programs/sleep/health/quizzes/sleepiness&quot;&gt;Epworth
+test&lt;/a&gt; and said
+the doctor would be in shortly.&lt;/p&gt;
+
+&lt;p&gt;When the doctor entered the room he looked up from my chart, concern on
+his face, then did a double take when he saw me. He looked as if he was
+about to turn and leave but asked “are you Jon Hoyt”? I answered yes and
+the concern on his face turned to a look of confusion, but he sat down
+and the appointment proceeded.&lt;/p&gt;
+
+&lt;p&gt;He explained that based on my study he was expecting a seriously
+overweight and exhausted male, someone over 300 pounds that looked like
+they hadn’t slept in years.&lt;/p&gt;
+
+&lt;h3 id=&quot;diagnosed&quot;&gt;Diagnosed&lt;/h3&gt;
+
+&lt;p&gt;This is when I learned just how close I came to death every night. The
+doctor explained that I stopped breathing 70 times per hour on average
+and my brain had to wake up just enough to kick start my breathing every
+time. This also meant I rarely, if ever, got the deep sleep we need to
+be truly rested.&lt;/p&gt;
+
+&lt;p&gt;The doctor prescribed a &lt;span class=&quot;caps&quot;&gt;CPAP&lt;/span&gt; machine and
+another sleep study to get the machine configured to the right settings
+to help me overcome my severe sleep apnea.&lt;/p&gt;
+
+&lt;h3 id=&quot;10x-your-life&quot;&gt;10X your life&lt;/h3&gt;
+
+&lt;p&gt;Within a week of getting the &lt;span class=&quot;caps&quot;&gt;CPAP&lt;/span&gt; my life and
+my wife’s were completely changed. She was no longer fighting with the
+locomotive next to her and I was getting the deepest and most restful
+sleep I’d had in a decade.&lt;/p&gt;
+
+&lt;p&gt;I went from 8-10 hours of sleep per night (I sleep without an alarm
+clock) to 6-8 hours of sleep per night and felt more rested and smarter.
+Yup, I felt smarter. I could reason out harder problems while
+programming, I could retain more information throughout the day, and I
+could communicate more easily at work.&lt;/p&gt;
+
+&lt;p&gt;Almost two years later I can’t imagine life without my &lt;span class=&quot;caps&quot;&gt;CPAP&lt;/span&gt;. So cheers to life, to sleep!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 13 Feb 2014 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2014/02/13/sleep-apnea-survivor/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2014/02/13/sleep-apnea-survivor/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>New Team and Lessons Learned</title>
+        <description>&lt;p&gt;The past few months I have been building a new team at
+&lt;a href=&quot;https://github.com&quot;&gt;GitHub&lt;/a&gt; focused on solving problems for our
+business teams. Here are a few valuable lessons we learned along the
+way.&lt;/p&gt;
+
+&lt;h3 id=&quot;solving-the-right-problem&quot;&gt;Solving the right problem&lt;/h3&gt;
+
+&lt;p&gt;We solve problems for a living and we have one major constraint, our
+time. This means we need to be thoughtful in choosing which problems to
+solve. We cannot solve them all.&lt;/p&gt;
+
+&lt;p&gt;We decided to solve employee expenses at GitHub by building our own
+expensing system. We had evaluated &lt;a href=&quot;http://expensify.com&quot;&gt;3rd party
+services&lt;/a&gt; and while they did 90% of what we
+needed, that last 10% made it seem like it was worth doing on our own.&lt;/p&gt;
+
+&lt;p&gt;What we failed to account for were the other opportunities, the other
+problems that needed solved, that ultimately would have a more lasting
+impact on GitHub.&lt;/p&gt;
+
+&lt;p&gt;If we use our company vision, to help people &lt;a href=&quot;https://github.com/home&quot;&gt;build software better
+together&lt;/a&gt;, as a framework for deciding what to
+work on, choosing the right problem to solve becomes much easier.&lt;/p&gt;
+
+&lt;p&gt;We should be sensitive to &lt;a href=&quot;http://en.wikipedia.org/wiki/Opportunity_cost&quot;&gt;opportunity
+costs&lt;/a&gt;. Solve the problem
+that will have the greatest impact with the lowest cost.&lt;/p&gt;
+
+&lt;h3 id=&quot;failing-fast&quot;&gt;Failing fast&lt;/h3&gt;
+
+&lt;p&gt;After choosing the wrong problem to solve we did not set clear goals so
+that we knew what success or failure meant. As a result it took us four
+months to realize we were working on the wrong thing.&lt;/p&gt;
+
+&lt;p&gt;Our first goal was to ship a system that received receipts, connected
+them to transactions, provided automatic and manual classification, and
+then entered the data into our accounting system.&lt;/p&gt;
+
+&lt;p&gt;The more I learn about software development, or solving any problem
+really, the more I realize a &lt;a href=&quot;http://en.wikipedia.org/wiki/Winning_percentage&quot;&gt;winning
+percentage&lt;/a&gt; requires
+breaking down problems (and their solutions) into smaller and smaller
+pieces. Shipping quickly and constant iteration mean faster course
+corrections and less costly failures.&lt;/p&gt;
+
+&lt;p&gt;The fact that we could not easily break the expensing problem down into
+smaller pieces should have been a red flag.&lt;/p&gt;
+
+&lt;p&gt;We can reduce the costs of failure, both emotionally and economically,
+if we fail fast. We can’t fail fast unless we ship quickly and iterate.&lt;/p&gt;
+
+&lt;h3 id=&quot;do-the-simplest-thing-first&quot;&gt;Do the simplest thing first&lt;/h3&gt;
+
+&lt;p&gt;We also started building a platform for different teams (and apps) at
+GitHub to be able to easily invoice customers. We dreamt up the perfect
+platform for invoicing, without having tried the simplest thing first.&lt;/p&gt;
+
+&lt;p&gt;The lie we often believe is that we understand what our constraints will
+be in a week, or a month, or six months and therefore we can save time
+by optimizing early. The truth is that we cannot foresee the future.&lt;/p&gt;
+
+&lt;p&gt;In the end we learned that invoicing integration needed to be built
+inside of the products it serves first. After it has been proven it can
+possibly be extracted into a shared service. This sounds like more work
+in the long run, but ultimately this process can adapt to change more
+quickly and easily.&lt;/p&gt;
+
+&lt;h3 id=&quot;one-more-thing&quot;&gt;One more thing&lt;/h3&gt;
+
+&lt;p&gt;We could have avoided a lot of heartache and wasted resources if I had
+sought mentorship from people with more experience and context at
+GitHub.&lt;/p&gt;
+
+&lt;p&gt;For long term success I need to constantly be learning, which means
+keeping an open mind and a humble spirit. I look forward to the journey
+\m/&lt;/p&gt;
+</description>
+        <pubDate>Mon, 16 Sep 2013 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2013/09/16/new-team-and-lessons-learned/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2013/09/16/new-team-and-lessons-learned/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Business With Pleasure</title>
+        <description>&lt;p&gt;Hi, my name is Jon. I’m an addict. It does not matter what it is if it
+makes me feel good I do more of it.&lt;/p&gt;
+
+&lt;h3 id=&quot;but-i-love-it-so-much&quot;&gt;But I Love It So Much!&lt;/h3&gt;
+
+&lt;p&gt;I love my job, or more specifically, I love the work I get to do every
+day. Combine my love for work with my addiction problem and I end up
+working too much and spending too little time with my wife, or reading a
+book, or taking a walk.&lt;/p&gt;
+
+&lt;p&gt;When things are going well at work I have a sense of accomplishment,
+which feels good, and &lt;a href=&quot;http://www.youtube.com/watch?v=48-tcRiBNj4&quot;&gt;I want
+more&lt;/a&gt;. How do you get more
+of something? You just keep doing the same thing over and over again
+that got you that good feeling right?&lt;/p&gt;
+
+&lt;h3 id=&quot;being-honest-with-myself&quot;&gt;Being Honest With Myself&lt;/h3&gt;
+
+&lt;p&gt;Right now I have no problem identifying that my line of thinking, doing
+more of something will result in more pleasure, is wrong. When I am in a
+destructive cycle I am completely blind to this fact.&lt;/p&gt;
+
+&lt;p&gt;A destructive cycle is wanting one thing too much and being blind to the
+costs of achieving it. We also call this being obsessed with something.
+Ultimately these destructive cycles lead to some sort of meltdown for me
+when &lt;a href=&quot;http://en.wikipedia.org/wiki/Diminishing_returns&quot;&gt;increased input does not lead to an equal or greater increase in
+output&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;During a cycle I can’t stop thinking about whatever I’m obsessing about;
+I bring it to the dinner table, I bring it on a date, I go to bed with
+it. This damages my marriage and my mental health.&lt;/p&gt;
+
+&lt;p&gt;Thankfully I am getting better at recognizing and breaking these cycles.
+I can’t take the credit though, my wife usually notices and starts to
+warn me early on. Learning to listen to her concerns is something I need
+to get better at. My last obsession lasted about ten days before she got
+through to me and I recognized the error of my ways. That was yesterday.&lt;/p&gt;
+
+&lt;h3 id=&quot;shortening-the-cycle&quot;&gt;Shortening the Cycle&lt;/h3&gt;
+
+&lt;p&gt;There are a few things I am going to try to shorten this cycle. The
+first is obvious, listen to my wife. But what if you don’t live with
+someone?&lt;/p&gt;
+
+&lt;p&gt;Recognize the signs. If I am spending less time doing things that relax
+me, like reading, walking with my dogs, or doing chores around the
+house, these are pretty good signs I’m not balancing work and life very
+well.&lt;/p&gt;
+
+&lt;p&gt;I’m trying out a checklist of sorts. It is just a long list of non-work
+things that I can do each day. I made this list by observing what has
+been healthy for me in the past. I’m not going to check off everything
+on the list each day, but doing three or four a day is a good sign, and
+doing one or none is probably a bad sign.&lt;/p&gt;
+
+&lt;p&gt;Make yourself accountable to your peers. If you know your signs ask a
+coworker and friend to watch out for them. Most of the time someone
+other than yourself will recognize the signs much sooner than you will.
+There is a caveat, if you are going to make yourself accountable you
+have to be willing to listen when they warn you.&lt;/p&gt;
+
+&lt;p&gt;Getting it right feels great too. Excuse me while I add blogging to my
+list of non-work things to do.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 15 May 2013 00:00:00 +0000</pubDate>
+        <link>http://theprogrammingbutler.com/blog/archives/2013/05/15/business-with-pleasure/</link>
+        <guid isPermaLink="true">http://theprogrammingbutler.com/blog/archives/2013/05/15/business-with-pleasure/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

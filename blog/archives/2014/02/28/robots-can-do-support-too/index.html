@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Robots can do support too</title>
+  <meta name="description" content="GitHub launched the Atom beta this week and theresponse has been great. As the first day was winding down a coworkersuggested we write an FAQ and add a robot...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://theprogrammingbutler.com/blog/archives/2014/02/28/robots-can-do-support-too/">
+  <link rel="alternate" type="application/rss+xml" title="The Programming Butler" href="http://theprogrammingbutler.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Programming Butler</a>
+
+    <nav class="site-nav">
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Robots can do support too</h1>
+    <p class="post-meta"><time datetime="2014-02-28T00:00:00+00:00" itemprop="datePublished">Feb 28, 2014</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>GitHub launched the <a href="http://atom.io">Atom beta</a> this week and the
+response has been great. As the first day was winding down a coworker
+suggested we write an FAQ and add a robot to answer the frequently asked
+questions in the irc channel where people were congregating. Here’s how
+we taught <a href="http://hubot.github.com">hubot</a> to do support.</p>
+
+<h3 id="questions-and-answers">Questions and answers</h3>
+
+<p>First my coworker gathered the questions that were being asked over and
+over again:</p>
+
+<ul>
+  <li>where do I get an invite?</li>
+  <li>is there a windows or linux version of atom?</li>
+  <li>how much will Atom cost?</li>
+</ul>
+
+<p>Next he wrote short and to the point answers:</p>
+
+<ul>
+  <li>Are you looking for an atom invite? Go to https://atom.io/ and put
+in your email, or join the #product-invitations room.</li>
+  <li>Are you looking for a windows or linux version of atom? We don’t
+have one yet, but we will in the future.</li>
+  <li>Were you inquiring in the channel about Atom’s price? We haven’t set
+a price yet, but expect it will be on par with the cost for
+similar editors.</li>
+</ul>
+
+<p>Finally he compiled the regular expressions that we could use in hubot
+to listen for people’s questions and then reply to them with the
+answers.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="nf">invit</span><span class="p">(</span><span class="nx">es</span><span class="p">?</span><span class="o">|</span><span class="nx">ation</span><span class="p">)</span><span class="o">/</span><span class="nx">i</span>
+<span class="o">/</span><span class="p">(</span><span class="nx">windows</span><span class="o">|</span><span class="nx">linux</span><span class="p">)</span><span class="o">/</span><span class="nx">i</span>
+<span class="o">/</span><span class="p">(</span><span class="nf">pric</span><span class="p">(</span><span class="nx">e</span><span class="o">|</span><span class="nx">ing</span><span class="p">)</span><span class="o">|</span><span class="nx">cost</span><span class="p">)</span><span class="o">/</span><span class="nx">i</span>
+</code></pre></div></div>
+
+<h3 id="training-the-robot">Training the robot</h3>
+
+<p>Meanwhile I used the <a href="https://github.com/github/hubot/blob/master/docs/README.md">Getting
+Started</a>
+instructions to fire up a hubot instance.</p>
+
+<p>Using <a href="http://shapeshed.com/setting-up-nodejs-and-npm-on-mac-osx/">npm</a>
+I installed the hubot and coffee-script packages.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-g</span> hubot coffee-script
+</code></pre></div></div>
+
+<p>Next I created the hubot instance.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hubot <span class="nt">--create</span> atomicHubot
+<span class="nb">cd </span>atomicHubot
+git init <span class="nb">.</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Create atomicHubot"</span>
+</code></pre></div></div>
+
+<p>Then I started hacking on the script (this is the final iteration with
+my work and my coworkers).</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Description:</span>
+<span class="c1">#   Replying to people in atom channels on freenode.</span>
+<span class="c1">#</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="na">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">robot</span><span class="p">)</span> <span class="o">-&gt;</span>
+
+  <span class="nx">isNotified</span> <span class="o">=</span> <span class="p">(</span><span class="nx">keyword</span><span class="p">,</span> <span class="nx">username</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">robot</span><span class="p">.</span><span class="na">brain</span><span class="p">.</span><span class="na">data</span><span class="p">[</span><span class="nx">keyword</span><span class="p">]</span> <span class="o">?=</span> <span class="p">[]</span>
+    <span class="nx">robot</span><span class="p">.</span><span class="na">brain</span><span class="p">.</span><span class="na">data</span><span class="p">[</span><span class="nx">keyword</span><span class="p">].</span><span class="na">some</span> <span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nx">username</span> <span class="o">==</span> <span class="nx">x</span>
+
+  <span class="nx">replyTo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">robot</span><span class="p">.</span><span class="na">send</span><span class="p">({</span><span class="na">user</span><span class="o">:</span> <span class="p">{</span><span class="na">name</span><span class="o">:</span> <span class="nx">user</span><span class="p">}},</span> <span class="nx">msg</span><span class="p">)</span>
+
+  <span class="nx">robot</span><span class="p">.</span><span class="na">hear</span> <span class="sr">/invit(es?|ation)/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">username</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="na">message</span><span class="p">.</span><span class="na">user</span><span class="p">.</span><span class="na">name</span>
+
+    <span class="nx">unless</span> <span class="nx">isNotified</span><span class="p">(</span><span class="s">"invite"</span><span class="p">,</span> <span class="nx">username</span><span class="p">)</span>
+      <span class="nx">replyTo</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="s">"Are you looking for an atom invite?  Go to https://atom.io/ and put in your email, or join the #product-invitations room."</span><span class="p">)</span>
+      <span class="nx">robot</span><span class="p">.</span><span class="na">brain</span><span class="p">.</span><span class="na">data</span><span class="p">.</span><span class="na">invite</span><span class="p">.</span><span class="na">push</span> <span class="nx">username</span>
+
+  <span class="nx">robot</span><span class="p">.</span><span class="na">hear</span> <span class="sr">/(windows|linux)/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">username</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="na">message</span><span class="p">.</span><span class="na">user</span><span class="p">.</span><span class="na">name</span>
+
+    <span class="nx">unless</span> <span class="nx">isNotified</span><span class="p">(</span><span class="s">"winux"</span><span class="p">,</span> <span class="nx">username</span><span class="p">)</span>
+      <span class="nx">replyTo</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="s">"Are you looking for a windows or linux version of atom?  We don't have one yet, but we will in the future."</span><span class="p">)</span>
+      <span class="nx">robot</span><span class="p">.</span><span class="na">brain</span><span class="p">.</span><span class="na">data</span><span class="p">.</span><span class="na">winux</span><span class="p">.</span><span class="na">push</span> <span class="nx">username</span>
+
+  <span class="nx">robot</span><span class="p">.</span><span class="na">hear</span> <span class="sr">/(pric(e|ing)|cost)/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">username</span> <span class="o">=</span> <span class="nx">msg</span><span class="p">.</span><span class="na">message</span><span class="p">.</span><span class="na">user</span><span class="p">.</span><span class="na">name</span>
+
+    <span class="nx">unless</span> <span class="nx">isNotified</span><span class="p">(</span><span class="s">"price"</span><span class="p">,</span> <span class="nx">username</span><span class="p">)</span>
+      <span class="nx">replyTo</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="s">"Were you inquiring in the channel about Atom's price?  We haven't set a price yet, but expect it will be on par with the cost for similar editors."</span><span class="p">)</span>
+      <span class="nx">robot</span><span class="p">.</span><span class="na">brain</span><span class="p">.</span><span class="na">data</span><span class="p">.</span><span class="na">price</span><span class="p">.</span><span class="na">push</span> <span class="nx">username</span>
+</code></pre></div></div>
+
+<p>Every so often I would test the script in hubot’s shell console.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/hubot
+&gt; where can I get an invite?
+hubot&gt; jonmagic: Are you looking for an atom invite?  Go to https://atom.io/ and put in your email, or join the ##atom-invitations room.
+</code></pre></div></div>
+
+<p>Next I installed the <a href="https://github.com/nandub/hubot-irc">irc adapter</a>
+in atomicHubot.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>hubot-irc <span class="nt">--save</span> <span class="o">&amp;&amp;</span> npm <span class="nb">install
+</span>git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Add irc adapter"</span>
+</code></pre></div></div>
+
+<p>Now I needed atomicHubot to actually live on the internet and connect to
+the irc channel so I read the <a href="https://github.com/github/hubot/blob/master/docs/deploying/heroku.md">Deploying Hubot to
+Heroku</a>
+instructions. These required that I have the <a href="http://toolbelt.heroku.com">Heroku
+toolbelt</a> installed.</p>
+
+<p>Step 1 was creating the application on Heroku and configuring it.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku create atomichubot
+heroku addons:add redistogo:nano
+heroku config:set <span class="nv">HEROKU_URL</span><span class="o">=</span>http://atomichubot.herokuapp.com
+heroku config:set <span class="nv">HUBOT_IRC_NICK</span><span class="o">=</span>atomicHubot
+heroku config:set <span class="nv">HUBOT_IRC_ROOMS</span><span class="o">=</span><span class="c">#channel-name</span>
+heroku config:set <span class="nv">HUBOT_IRC_SERVER</span><span class="o">=</span>irc.freenode.net
+heroku config:set <span class="nv">HUBOT_IRC_UNFLOOD</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div></div>
+
+<p>Step 2 was deploying to Heroku.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push heroku master
+</code></pre></div></div>
+
+<p><strong>That was it, I didn’t have to do any trouble shooting, atomicHubot
+connected to the irc channel and began fielding questions!</strong></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Adding this hubot to the irc channel helped reduce the number of
+questions we had to answer and increased the speed at which common
+questions were answered.</p>
+
+<p>There are probably easier ways to setup auto reply answers in irc
+channels but hubot is a tool I’m familiar with and love to hack on. It
+only took a few minutes to setup and I’ll probably use the same
+technique in the future.</p>
+
+<p>This may not work for everyone but hubot sure helped out in a pinch,
+give it a try sometime. For tips on writing hubot scripts see my post
+<a href="http://theprogrammingbutler.com/blog/archives/2011/10/28/hubot-scripts-explained/">hubot Scripts
+Explained</a>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Programming Butler</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>The Programming Butler</li>
+          <li><a href="mailto:jonmagic@gmail.com">jonmagic@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jonmagic"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jonmagic"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>I am a geek by choice and a geek by trade. I live with my family in Northern California where we love to cook, explore, and enjoy life. I work at GitHub where I solve problems with software and buttle now and again.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4d597dfd6bb4ba2c48000003');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+  </body>
+
+</html>

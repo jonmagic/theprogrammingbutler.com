@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Best phone system for a small business, Part 1</title>
+  <meta name="description" content="This article is for small business owners, and even better, for their ITguy/gal… If you are looking at upgrading your phone system, and want toupgrade inexpe...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://theprogrammingbutler.com/blog/archives/2009/08/16/best-phone-system-for-a-small-business-part-1/">
+  <link rel="alternate" type="application/rss+xml" title="The Programming Butler" href="http://theprogrammingbutler.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Programming Butler</a>
+
+    <nav class="site-nav">
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Best phone system for a small business, Part 1</h1>
+    <p class="post-meta"><time datetime="2009-08-16T00:00:00+00:00" itemprop="datePublished">Aug 16, 2009</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>This article is for small business owners, and even better, for their IT
+guy/gal… If you are looking at upgrading your phone system, and want to
+upgrade inexpensively but have a clear upgrade path for the future, I’m
+going to outline how to build what I believe to be the most cost
+effective, easy to maintain, pbx based phone system available.</p>
+
+<p>The pbx itself is based on PC hardware, with a special card for
+interfacing with the telco (<span class="caps">ATT</span>, Verizon,
+etc), and a software stack called <a href="http://pbxinaflash.net/"><span class="caps"><span class="caps">PBX</span></span> in a Flash</a>.
+<span class="caps"><span class="caps">PBX</span></span> in a Flash
+(PiaF) was put together <a href="http://pbxinaflash.net/about/">by a few
+gentlemen</a> looking for a solid software
+stack for their telephony needs. Here is what is in the stack:</p>
+
+<ul>
+  <li><a href="http://www.centos.org/">CentOS</a> for the OS that everything lies on
+top of.</li>
+  <li><a href="http://www.asterisk.org/">Asterisk</a> for the <span class="caps"><span class="caps">PBX</span></span> stack.</li>
+  <li><a href="http://www.freepbx.org/">FreePBX</a> helps in configuring and
+maintaining the Asterisk configuration.</li>
+  <li>Prebuilt scripts, for configuring everything from dhcp to cisco
+phones</li>
+</ul>
+
+<p>For phone hardware I’ve used Cisco, Linksys, and
+<a href="http://www.aastra.com/">Aastra</a>. Aastra seems to be the recommended
+brand of late, for features, price, and ease of configuration. I’m not a
+huge fan of the Cisco phones (overpriced and they seem to cripple their
+<span class="caps"><span class="caps">SIP</span></span> firmware), but
+Cisco’s economical product line, Linksys, makes some great phones.</p>
+
+<p>Well, there’s the intro for you, if you want to learn more, read on!</p>
+
+<p>I’ve done phone systems for businesses that only need 2 or 3 phones, and
+systems for companies with 20+ extensions. I’m comfortable recommending
+this system for a business with up to 100 extensions, more than that and
+you might want to look at having dual load balanced servers.</p>
+
+<p>For this setup I’m going to describe below, we’ve got a business with
+around 30 employees, 20 of which have their own extensions on the phone
+system. There is a sales group, support group, and various
+administrators, as well as production staff.</p>
+
+<p>Any $400 to $600 PC will work for our base system. 2.0ghz+ Intel or
+<span class="caps"><span class="caps">AMD</span></span> processor, at
+least 1gb of ram (I put in 2gb since its so cheap). Looking for hardware
+with a good warranty? Check out my company <a href="http://www.sabretechllc.com">SabreTech Consulting <span class="caps"><span class="caps">LLC</span></span></a> for some
+great PC’s. We ship anywhere in the US (and actually, a lot of our PC’s
+are overseas as well, thru an associate of ours).</p>
+
+<p>Let me back up for a second and explain the two ways we can get “dial
+tone” to our phone system (i.e. be able to make calls to the outside
+world). Way #1, use land lines thru your local telco, for example <span class="caps"><span class="caps">ATT</span></span> or Verizon. Way #2,
+use voip trunks thru any of hundreds of carriers, this method requires a
+<span class="caps"><span class="caps">NICE</span> <span class="caps">SOLID</span></span> internet connection. Depending on your
+area and telco providers, it may or may not be more cost effective to
+use land lines thru the telco. These days I’ve found that its usually
+cost effective to have enough land lines, with “unlimited” long
+distance/local packages on them, for your average use (sum of the number
+of lines you use every minute of the day, divided by the number of
+minutes they are in use), and then voip trunks for “peak” times when you
+need Just A Little More, and for international calls.</p>
+
+<p>So, we’ve figured out that our average use is 4 to 6 lines in use at any
+given minute (this is just calls to the outside world, does not include
+internal calls, i.e. extension to extension). So we want to get 6 lines
+with unlimited local and long distance packages, which ends up costing
+about $456 a month. So how do we get these phone lines into our phone
+system?</p>
+
+<p>Ok, time to step back again and explain the two ways the phone company
+can get us a line, digital or analog. Analog lines are the ones we had
+when we were growing up, you know, the phone on your wall in the kitchen
+:-) These analog lines are also called <a href="http://en.wikipedia.org/wiki/Plain_old_telephone_service">pots
+lines</a>.
+Digital lines, a.k.a. <a href="http://en.wikipedia.org/wiki/Primary_rate_interface"><span class="caps"><span class="caps">PRI</span></span>’s</a>,
+usually come in bundles of 23. In some areas you can get “partial” <span class="caps"><span class="caps">PRI</span></span>’s, and if you can in
+your area, and the price is right, <span class="caps">DO IT</span>…
+Digital lines will be better quality and give fewer headaches than
+analog lines. The nice thing about digital lines is they either <span class="caps"><span class="caps">WORK</span></span> or the <span class="caps"><span class="caps">DON</span></span>’T <span class="caps"><span class="caps">WORK</span></span>, there’s not much
+in-between. Analog lines on the other hand, can have a myriad of
+problems, including dropped calls, static, etc. Analog lines can work,
+even if the connection is crappy, and therefore its harder to convince
+the telco that there might be a problem with the line.</p>
+
+<p>So, I want some lines from my telco, but I need to get them <span class="caps"><span class="caps">INTO</span></span> the phone system! My
+absolute favorite company for doing this is <a href="http://www.rhinoequipment.com/">Rhino
+Equipment</a>. They make a series of analog
+and digital interface cards. These cards <span class="caps"><span class="caps">ARE</span> <span class="caps">NOT</span> <span class="caps">CHEAP</span></span>, <span class="caps">BUT</span> they are
+worth every penny and more. In fact, I would pay twice the price they
+charge for them, and here is why: they have the best tech support I have
+ever used in my life. Let me repeat that. <span class="caps"><span class="caps">THEY</span> <span class="caps">HAVE</span> <span class="caps">THE</span> <span class="caps">BEST</span> <span class="caps">TECH</span> <span class="caps">SUPPORT</span> ON <span class="caps">THE</span> <span class="caps">PLANET</span></span>. These
+guys have helped me time and time again, always courteous and patient.
+On one job they worked with me for 3 days trying to troubleshoot dropped
+calls, and said on day 2 that it wasn’t their equipment, but instead the
+phone company, but they stuck in there <span class="caps"><span class="caps">RIGHT</span> TO <span class="caps">THE</span> <span class="caps">END</span></span>. They kept helping me, even after they
+knew it was the phone company and not their equipment causing problems,
+and if it weren’t for them, I never could have convinced the phone
+company to get their act together and fix the lines.</p>
+
+<p>For most small businesses, where I can’t get a <span class="caps"><span class="caps">PRI</span></span>, only pots lines, I use the <a href="http://www.rhinoequipment.com/R8FXXcard.html">Rhino <span class="caps">R8FXX</span>-EC
+card</a>. It can support up
+to 4 fxo (or fxs) modules on it. Each fxo module can handle 2 pots lines
+from the telco. This card has built in echo cancellation, just one more
+reason its worth every penny. For this example, since we’re going to
+have 6 lines, I need to get the Rhino card with 3 modules on it.</p>
+
+<p>Ok, we’ve got our PC, we’ve got our interface card to interface with the
+telco, now we just need to pick a phone model to get everyone. I’m going
+to have to go with <a href="http://nerdvittles.com/index.php?p=207">this
+recommendation</a>, the <a href="http://www.aastra.com/cps/rde/xchg/SID-3D8CCB6A-BC5ACAC2/04/hs.xsl/19703.htm">Aastra
+57i</a>.
+I have yet to get this particular model in to try myself, but I trust
+Ward Mundy with my life, so what he says, goes :-)</p>
+
+<p>Well, two pages in and I’ve decided to split this into a multi part
+article. We’ll call this Part I. Please keep checking back for Part II,
+where I’ll cover installing and configuring the software stack and your
+Rhino card.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Programming Butler</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>The Programming Butler</li>
+          <li><a href="mailto:jonmagic@gmail.com">jonmagic@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jonmagic"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jonmagic"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>I am a geek by choice and a geek by trade. I live with my family in Northern California where we love to cook, explore, and enjoy life. I work at GitHub where I solve problems with software and buttle now and again.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4d597dfd6bb4ba2c48000003');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+  </body>
+
+</html>

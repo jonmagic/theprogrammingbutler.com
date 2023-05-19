@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>hubot Scripts Explained</title>
+  <meta name="description" content="Ok, so now you’ve got your shiny new hubot up and ready to listen toyour every command. But what should we tell him to do with our nonsense!">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://theprogrammingbutler.com/blog/archives/2011/10/28/hubot-scripts-explained/">
+  <link rel="alternate" type="application/rss+xml" title="The Programming Butler" href="http://theprogrammingbutler.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">The Programming Butler</a>
+
+    <nav class="site-nav">
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">hubot Scripts Explained</h1>
+    <p class="post-meta"><time datetime="2011-10-28T00:00:00+00:00" itemprop="datePublished">Oct 28, 2011</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Ok, so now you’ve got your shiny new hubot up and ready to listen to
+your every command. But what should we tell him to do with our nonsense!</p>
+
+<h3 id="basics">Basics</h3>
+
+<p>Scripts for <a href="https://github.com/github/hubot">hubot</a> are written with
+<a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a>. This is what
+a basic script looks like:</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># hubot greeting.</span>
+<span class="c1">#</span>
+<span class="c1"># (hi|hello) - say hi to your butler</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="na">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">robot</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="nx">robot</span><span class="p">.</span><span class="na">respond</span> <span class="sr">/hi|hello/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Howdy!"</span>
+</code></pre></div></div>
+
+<p>Lets break this script down. The first line is just a description of the
+script. The third line tells hubot what to include in the help (when you
+ask hubot for help).</p>
+
+<p>The actual code starts on the module.exports line. Every script you make
+will start with that line.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="na">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">robot</span><span class="p">)</span> <span class="o">-&gt;</span>
+</code></pre></div></div>
+
+<p>The next line tells hubot to respond to hi and hello.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">robot</span><span class="p">.</span><span class="na">respond</span> <span class="sr">/hi|hello/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+</code></pre></div></div>
+
+<p>It uses a <a href="http://en.wikipedia.org/wiki/Regular_expression">regular
+expression</a> to parse
+the text, looking for the words hi and hello. The i after the last slash
+tells the regular expression to not be case sensitive, so it will also
+match Hi and Hello.</p>
+
+<p>I like to use <a href="http://rubular.com/">rubular</a> for writing and testing
+regular expressions. Its quick, easy to use, and while javascript
+regular expressions aren’t exactly like ruby regular expressions I
+haven’t run into any inconsistencies yet.</p>
+
+<p>Finally we tell hubot to take the message and send a message back.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Howdy!"</span>
+</code></pre></div></div>
+
+<h3 id="respond-vs-hear">Respond vs Hear</h3>
+
+<p>I didn’t discover this at first and thought that hubot only responded to
+commands directed at him, but then I discovered robot.hear! Whereas
+robot.respond only matches messages directed at hubot, robot.hear will
+run your regular expression against any chat message!</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Hubot has an attitude</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="na">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">robot</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="nx">robot</span><span class="p">.</span><span class="na">hear</span> <span class="sr">/tired|too hard|to hard|upset|bored/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Panzy"</span>
+</code></pre></div></div>
+
+<p>See what I did there :) Any time someone in our chat room says they are
+tired, that something is too hard, upset, or bored, hubot tells them
+they’re a panzy. Oh yeah. This robot butler has an attitude.</p>
+
+<h3 id="random">Random</h3>
+
+<p>I saw this used first in the shipit script, which displays a random
+shipit squirrel for your viewing pleasure whenever someone says the
+words “ship it” in your chat room.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rodent Motivation</span>
+<span class="c1">#</span>
+<span class="c1"># ship it - Display a motivation squirrel</span>
+<span class="c1">#</span>
+
+<span class="nx">squirrels</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s">"http://img.skitch.com/20100714-d6q52xajfh4cimxr3888yb77ru.jpg"</span><span class="p">,</span>
+  <span class="s">"https://img.skitch.com/20111026-r2wsngtu4jftwxmsytdke6arwd.png"</span><span class="p">,</span>
+  <span class="s">"http://cl.ly/1i0s1r3t2s2G3P1N3t3M/Screen_Shot_2011-10-27_at_9.36.45_AM.png"</span><span class="p">,</span>
+  <span class="s">"http://shipitsquirrel.github.com/images/squirrel.png"</span>
+<span class="p">]</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="na">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">robot</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="nx">robot</span><span class="p">.</span><span class="na">hear</span> <span class="sr">/ship it/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="nx">msg</span><span class="p">.</span><span class="na">random</span> <span class="nx">squirrels</span>
+</code></pre></div></div>
+
+<p>Notice the array that we create with 4 different shipit squirrel images.
+Then notice this line:</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="nx">msg</span><span class="p">.</span><span class="na">random</span> <span class="nx">squirrels</span>
+</code></pre></div></div>
+
+<p>The msg object has a random method on it which we can pass an array and
+it will pick a random item from that array! Super handy to keep things
+from getting repetitive.</p>
+
+<h3 id="reply">Reply</h3>
+
+<p>You can reply to a user by changing the send command to reply like this:</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">msg</span><span class="p">.</span><span class="na">reply</span> <span class="s">"Why thank you sir!"</span>
+</code></pre></div></div>
+
+<p>Replies will be directed at a specific user, example: “@hoyt Why thank
+you sir!”</p>
+
+<h3 id="http">Http</h3>
+
+<p>So far we’ve only talked about how to make hubot listen and respond in
+various ways. Hubot really starts to get interesting when we empower him
+to go out and do our bidding in the larger world though. This is where
+hubot really starts to become powerful!</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Whois for gems, because gem names are like domains in the 90's</span>
+<span class="c1">#</span>
+<span class="c1"># gem whois &lt;gemname&gt; - returns gem details if it exists</span>
+<span class="c1">#</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="na">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">robot</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="nx">robot</span><span class="p">.</span><span class="na">respond</span> <span class="sr">/gem whois (.*)/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">gemname</span> <span class="o">=</span> <span class="nx">escape</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="na">match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="na">http</span><span class="p">(</span><span class="s">"http://rubygems.org/api/v1/gems/</span><span class="si">#{</span><span class="nx">gemname</span><span class="si">}</span><span class="s">.json"</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">get</span><span class="p">()</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="o">-&gt;</span>
+        <span class="k">try</span>
+          <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+          <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"   gem name: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="se">\n</span><span class="s">
+     owners: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">authors</span><span class="si">}</span><span class="se">\n</span><span class="s">
+       info: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">info</span><span class="si">}</span><span class="se">\n</span><span class="s">
+    version: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">version</span><span class="si">}</span><span class="se">\n</span><span class="s">
+  downloads: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">downloads</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span>
+        <span class="k">catch</span> <span class="nx">error</span>
+          <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Gem not found. It will be mine. Oh yes. It will be mine. *sinister laugh*"</span>
+</code></pre></div></div>
+
+<p>This script is doing quite a bit so we’ll dissect it line by line.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">robot</span><span class="p">.</span><span class="na">respond</span> <span class="sr">/gem whois (.*)/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+</code></pre></div></div>
+
+<p>This tells hubot to look for messages directed at him that have the
+words “gem whois” and then some string.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">gemname</span> <span class="o">=</span> <span class="nx">escape</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="na">match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Now I grab the gemname from the regular expression. msg.match with an
+integer will match the captured item from the regular expression. You
+use parenthesis to capture strings in regular expressions, and they get
+numbered left to right by however many there are. In this case its the
+first one, so we pass 1 to msg.match and then assign it off to our
+variable gemname.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">msg</span><span class="p">.</span><span class="na">http</span><span class="p">(</span><span class="s">"http://rubygems.org/api/v1/gems/</span><span class="si">#{</span><span class="nx">gemname</span><span class="si">}</span><span class="s">.json"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Next we tell the msg.http object to use this url, with the gemname
+interpolated in it.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="na">get</span><span class="p">()</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="o">-&gt;</span>
+</code></pre></div></div>
+
+<p>The .get() function kicks off the request and returns 3 objects, err,
+res, and body. In this case we’re only interested in body.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span>
+  <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+  <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"   gem name: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">name</span><span class="si">}</span><span class="se">\n</span><span class="s">
+    owners: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">authors</span><span class="si">}</span><span class="se">\n</span><span class="s">
+    info: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">info</span><span class="si">}</span><span class="se">\n</span><span class="s">
+    version: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">version</span><span class="si">}</span><span class="se">\n</span><span class="s">
+    downloads: </span><span class="si">#{</span><span class="nx">json</span><span class="p">.</span><span class="na">downloads</span><span class="si">}</span><span class="se">\n</span><span class="s">"</span>
+<span class="k">catch</span> <span class="nx">error</span>
+  <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Gem not found. It will be mine. Oh yes. It will be mine. *sinister laugh*"</span>
+</code></pre></div></div>
+
+<p>If <span class="caps">JSON</span>.parse is able to parse the body then
+it displays the gem information, if it errors we get the “Gem not found”
+message.</p>
+
+<h3 id="advanced-http">Advanced <span class="caps">HTTP</span></h3>
+
+<p>What if you want to hit an <span class="caps">API</span> that requires
+authentication? Here is a script that uses http basic auth when hitting
+the <a href="http://dnsimple.com">dnsimple</a> api to check domain name
+availability.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Domain availability via DNSimple, requires you set</span>
+<span class="c1"># DNSIMPLE_USERNAME &amp; DNSIMPLE_PASSWORD environment variables</span>
+<span class="c1">#</span>
+<span class="c1"># check domain &lt;domainname&gt; - returns whether a domain is available</span>
+<span class="c1">#</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="na">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">robot</span><span class="p">)</span> <span class="o">-&gt;</span>
+  <span class="nx">robot</span><span class="p">.</span><span class="na">hear</span> <span class="sr">/check domain (.*)/i</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nx">domain</span> <span class="o">=</span> <span class="nx">escape</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="na">match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nx">user</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="na">env</span><span class="p">.</span><span class="na">DNSIMPLE_USERNAME</span>
+    <span class="nx">pass</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="na">env</span><span class="p">.</span><span class="na">DNSIMPLE_PASSWORD</span>
+    <span class="nx">auth</span> <span class="o">=</span> <span class="s">'Basic '</span> <span class="o">+</span> <span class="k">new</span> <span class="nx">Buffer</span><span class="p">(</span><span class="nx">user</span> <span class="o">+</span> <span class="s">':'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">).</span><span class="na">toString</span><span class="p">(</span><span class="s">'base64'</span><span class="p">);</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="na">http</span><span class="p">(</span><span class="s">"https://dnsimple.com/domains/</span><span class="si">#{</span><span class="nx">domain</span><span class="si">}</span><span class="s">/check"</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">headers</span><span class="p">(</span><span class="na">Authorization</span><span class="o">:</span> <span class="nx">auth</span><span class="p">,</span> <span class="na">Accept</span><span class="o">:</span> <span class="s">'application/json'</span><span class="p">)</span>
+      <span class="p">.</span><span class="na">get</span><span class="p">()</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="o">-&gt;</span>
+        <span class="k">switch</span> <span class="nx">res</span><span class="p">.</span><span class="na">statusCode</span>
+          <span class="k">when</span> <span class="mi">200</span>
+            <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Sorry, </span><span class="si">#{</span><span class="nx">domain</span><span class="si">}</span><span class="s"> is not available."</span>
+          <span class="k">when</span> <span class="mi">404</span>
+            <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Cybersquat that s***!"</span>
+          <span class="k">when</span> <span class="mi">401</span>
+            <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"You need to authenticate by setting the DNSIMPLE_USERNAME &amp; DNSIMPLE_PASSWORD environment variables"</span>
+          <span class="k">else</span>
+            <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Unable to process your request and we're not sure why :("</span>
+</code></pre></div></div>
+
+<p>We do the same thing as the last example, grabbing the domain name that
+is captured by the regular expression, but then things get a bit
+different.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">user</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="na">env</span><span class="p">.</span><span class="na">DNSIMPLE_USERNAME</span>
+<span class="nx">pass</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="na">env</span><span class="p">.</span><span class="na">DNSIMPLE_PASSWORD</span>
+</code></pre></div></div>
+
+<p>Here we grab some environment variables and assign them to variables. If
+you are <a href="http://jonmagic.com/blog/archives/2011/10/28/hipchat-hubot-and-me/">deploying hubot to
+Heroku</a>
+then setting environment variables is crazy easy:</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">heroku</span> <span class="na">config</span><span class="o">:</span><span class="nx">add</span> <span class="nx">DNSIMPLE_USERNAME</span><span class="o">=</span><span class="nx">john</span><span class="vi">@</span><span class="na">doe</span><span class="p">.</span><span class="na">com</span> <span class="nx">DNSIMPLE_PASSWORD</span><span class="o">=</span><span class="mi">4</span><span class="nx">w3s0m3p4ssw0rd</span>
+</code></pre></div></div>
+
+<p>Next we have to create the auth string that we’ll stuff into the
+authorization header.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">auth</span> <span class="o">=</span> <span class="s">'Basic '</span> <span class="o">+</span> <span class="k">new</span> <span class="nx">Buffer</span><span class="p">(</span><span class="nx">user</span> <span class="o">+</span> <span class="s">':'</span> <span class="o">+</span> <span class="nx">pass</span><span class="p">).</span><span class="na">toString</span><span class="p">(</span><span class="s">'base64'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Creating that auth string is some javascript voodoo that took me awhile
+to figure out, finally finding an article on
+<a href="http://stackoverflow.com/questions/3905126/how-to-use-http-client-in-node-js-if-there-are-basic-authorization">stackoverflow</a>
+that had the magic I needed.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">msg</span><span class="p">.</span><span class="na">http</span><span class="p">(</span><span class="s">"https://dnsimple.com/domains/</span><span class="si">#{</span><span class="nx">domain</span><span class="si">}</span><span class="s">/check"</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">headers</span><span class="p">(</span><span class="na">Authorization</span><span class="o">:</span> <span class="nx">auth</span><span class="p">,</span> <span class="na">Accept</span><span class="o">:</span> <span class="s">'application/json'</span><span class="p">)</span>
+  <span class="p">.</span><span class="na">get</span><span class="p">()</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="o">-&gt;</span>
+</code></pre></div></div>
+
+<p>The really interesting line in the code above is the .headers() line. We
+can set headers for the http request before calling .get(), allowing us
+to configure the Authorization and Accept headers! Now the last bit.</p>
+
+<div class="language-coffeescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="nx">res</span><span class="p">.</span><span class="na">statusCode</span>
+  <span class="k">when</span> <span class="mi">200</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Sorry, </span><span class="si">#{</span><span class="nx">domain</span><span class="si">}</span><span class="s"> is not available."</span>
+  <span class="k">when</span> <span class="mi">404</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Cybersquat that s***!"</span>
+  <span class="k">when</span> <span class="mi">401</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"You need to authenticate by setting the DNSIMPLE_USERNAME &amp; DNSIMPLE_PASSWORD environment variables"</span>
+  <span class="k">else</span>
+    <span class="nx">msg</span><span class="p">.</span><span class="na">send</span> <span class="s">"Unable to process your request and we're not sure why :("</span>
+</code></pre></div></div>
+
+<p>The response (res) object has a statusCode method on it which we can use
+to match http response codes. Based on the dnsimple api I was able to
+make a simple switch statement with the correct replies for each status
+code.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>I hope this is helpful to some folks out there. I can’t wait to see what
+other hubot scripts people write!</p>
+
+<p>Make sure to fork the
+<a href="https://github.com/github/hubot-scripts">hubot-scripts</a> repo, add your
+scripts, and do a pull request once you’ve got them working. The gem
+whois and dnsimple scripts above have already been accepted into the
+hubot-scripts library!</p>
+
+<p>Enjoy :)</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">The Programming Butler</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>The Programming Butler</li>
+          <li><a href="mailto:jonmagic@gmail.com">jonmagic@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jonmagic"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jonmagic"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">jonmagic</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>I am a geek by choice and a geek by trade. I live with my family in Northern California where we love to cook, explore, and enjoy life. I work at GitHub where I solve problems with software and buttle now and again.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4d597dfd6bb4ba2c48000003');
+    t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+    t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+  </body>
+
+</html>
