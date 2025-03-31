@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+    <title>The Programming Butler</title>
+    <link href="https://theprogrammingbutler.com/feed.xml" rel="self" />
+    <link href="https://theprogrammingbutler.com" />
+    <updated>2025-03-31T12:06:52-07:00</updated>
+    <author>
+        <name>Jonathan Hoyt</name>
+    </author>
+    <id>https://theprogrammingbutler.com</id>
+
+    <entry>
+        <title>Time for change</title>
+        <author>
+            <name>Jonathan Hoyt</name>
+        </author>
+        <link href="https://theprogrammingbutler.com/time-for-change.html"/>
+        <id>https://theprogrammingbutler.com/time-for-change.html</id>
+
+        <updated>2005-09-28T16:43:00-07:00</updated>
+            <summary>
+                <![CDATA[
+                    I’ve been meaning to redo my site for quite some time now… blosxom was great, but with time come changes. So I’ve switched to using Typo for my blogging engine… It was built using RubyOnRails , a new web development framework that is pretty nifty…&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>I’ve been meaning to redo my site for quite some time now…
+<a href="http://www.blosxom.com">blosxom</a> was great, but with time come changes.
+So I’ve switched to using <a href="http://typo.leetsoft.com">Typo</a> for my
+blogging engine… It was built using
+<a href="http://www.rubyonrails.com">RubyOnRails</a> , a new web development
+framework that is pretty nifty…</p><p><strong>What does this mean for you?</strong> Not much really, a new look and feel…
+My old site is still there with all the old content, just use the links
+on the right to access it… I considered importing all my old posts to
+the new system, but decided I don’t have enough time.</p><p><strong>What does this mean for me?</strong> Again, not much. Its going to be easier
+to post now, and I can enhance my site using quite a bit more as I have
+time… Any new feature I want I can implement, whether someone else has
+done it or not… Hopefully this will get me excited about blogging again,
+so you my poor reader(s) do not get bored :-)</p><p>Don’t forget to change your newsreaders to point at the new <a href="http://feeds.feedburner.com/jonmagic">xml
+feed</a> …</p>
+            ]]>
+        </content>
+    </entry>
+</feed>

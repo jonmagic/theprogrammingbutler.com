@@ -1,0 +1,27 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "The Programming Butler",
+    "description": "",
+    "home_page_url": "https://theprogrammingbutler.com",
+    "feed_url": "https://theprogrammingbutler.com/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "Jonathan Hoyt"
+    },
+    "items": [
+        {
+            "id": "https://theprogrammingbutler.com/time-for-change.html",
+            "url": "https://theprogrammingbutler.com/time-for-change.html",
+            "title": "Time for change",
+            "summary": "I’ve been meaning to redo my site for quite some time now… blosxom was great, but with time come changes. So I’ve switched to using Typo for my blogging engine… It was built using RubyOnRails , a new web development framework that is pretty nifty…&hellip;",
+            "content_html": "<p>I’ve been meaning to redo my site for quite some time now…\n<a href=\"http://www.blosxom.com\">blosxom</a> was great, but with time come changes.\nSo I’ve switched to using <a href=\"http://typo.leetsoft.com\">Typo</a> for my\nblogging engine… It was built using\n<a href=\"http://www.rubyonrails.com\">RubyOnRails</a> , a new web development\nframework that is pretty nifty…</p><p><strong>What does this mean for you?</strong> Not much really, a new look and feel…\nMy old site is still there with all the old content, just use the links\non the right to access it… I considered importing all my old posts to\nthe new system, but decided I don’t have enough time.</p><p><strong>What does this mean for me?</strong> Again, not much. Its going to be easier\nto post now, and I can enhance my site using quite a bit more as I have\ntime… Any new feature I want I can implement, whether someone else has\ndone it or not… Hopefully this will get me excited about blogging again,\nso you my poor reader(s) do not get bored :-)</p><p>Don’t forget to change your newsreaders to point at the new <a href=\"http://feeds.feedburner.com/jonmagic\">xml\nfeed</a> …</p>",
+            "author": {
+                "name": "Jonathan Hoyt"
+            },
+            "tags": [
+            ],
+            "date_published": "2005-09-28T16:43:00-07:00",
+            "date_modified": "2025-03-31T12:06:52-07:00"
+        }
+    ]
+}
