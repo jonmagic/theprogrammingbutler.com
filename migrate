@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+
+MIGRATED_FILE = 'migrated.txt'
+
+File.foreach(MIGRATED_FILE) do |line|
+  next if line.strip.empty?
+  old_url, new_path = line.strip.split(' ', 2)
+  next unless old_url && new_path
+
+  # Extract the path after the domain
+  old_path = old_url.sub('https://theprogrammingbutler.com/', '')
+  # Remove any leading/trailing slashes
+  old_path = old_path.gsub(%r{^/|/$}, '')
+
+  # Find the index.html file
+  index_file = File.join(old_path, 'index.html')
+  unless File.exist?(index_file)
+    puts "Not found: #{index_file}"
+    next
+  end
+
+  new_url = "https://jonmagic.com#{new_path}"
+
+  # Write the meta redirect
+  html = <<~HTML
+    <!-- This page has moved permanently. If you are not redirected, visit: #{new_url} -->
+    <html>
+      <head>
+        <meta http-equiv="refresh" content="0; url=#{new_url}">
+        <meta name="robots" content="noindex">
+        <title>Redirecting...</title>
+      </head>
+      <body>
+        <p>This page has moved permanently. <a href="#{new_url}">Click here if you are not redirected.</a></p>
+      </body>
+    </html>
+  HTML
+
+  File.write(index_file, html)
+  puts "Updated: #{index_file} -> #{new_url}"
+end
